@@ -1,10 +1,6 @@
-/*this file will only have two separate widgets to be returned when it's either smallscreen
-or largescreen. */
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:portfolio_web/views/contact/contactcomponents.dart';
-import 'package:portfolio_web/shared/constants.dart';
 //import 'package:portfolio_web/sample.dart';
 
 Widget lContact(BuildContext context) {
@@ -22,17 +18,15 @@ Widget lContact(BuildContext context) {
 }
 
 Widget sContact(BuildContext context) {
-  return Container(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      // crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        contactContent(context),
-        SizedBox(height: 200),
-        smallSocials(context)
-        //socials here
-      ],
-      //
-    ),
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    // crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      contactContent(context),
+      const SizedBox(height: 200),
+      smallSocials(context)
+      //socials here
+    ],
+    //
   );
 }

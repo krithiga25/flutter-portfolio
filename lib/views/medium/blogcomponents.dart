@@ -32,7 +32,7 @@ class Article {
 }
 
 blogContent(BuildContext context) {
-  return Container(
+  return SizedBox(
       width: ResponsiveWidget.isSmallScreen(context)
           ? ScreenSize.screenWidth * 0.75
           //changed it to 0.75 from 0.32
@@ -50,11 +50,11 @@ blogContent(BuildContext context) {
             children: <Widget>[
               Container(
                 //bottom alone
-                padding: EdgeInsets.only(bottom: 20),
-                child: Text(
+                padding: const EdgeInsets.only(bottom: 20),
+                child: const Text(
                   //change font
                   "Sometimes, I write..",
-                  textScaleFactor: 3,
+                  textScaler: TextScaler.linear(3),
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -64,7 +64,7 @@ blogContent(BuildContext context) {
                   children: [
                     ArticleWidget(articles[i]),
 
-                    SizedBox(height: 25), // Add space after each ArticleWidget
+                    const SizedBox(height: 25), // Add space after each ArticleWidget
                   ],
                 ),
             ]),
@@ -74,27 +74,27 @@ blogContent(BuildContext context) {
 class ArticleWidget extends StatelessWidget {
   final Article article;
 
-  ArticleWidget(this.article);
+  const ArticleWidget(this.article, {super.key});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned(
+        const Positioned(
           left: 0,
           child: Icon(Icons.format_quote, size: 48.0),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
         Padding(
-          padding: EdgeInsets.only(left: 60),
+          padding: const EdgeInsets.only(left: 60),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RichText(
                   text: TextSpan(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         letterSpacing: 1.5,
@@ -103,12 +103,12 @@ class ArticleWidget extends StatelessWidget {
                       text: article.title,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          launch(article.link);
+                          launchUrl(Uri.parse(article.link));
                         })),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 article.site,
-                style: TextStyle(fontSize: 14.0),
+                style: const TextStyle(fontSize: 14.0),
               ),
             ],
           ),

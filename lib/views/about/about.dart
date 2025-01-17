@@ -1,24 +1,16 @@
-//will have description about myself and my skills
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:portfolio_web/views/about/aboutcomponents.dart';
-import 'package:portfolio_web/shared/constants.dart';
-
-//import 'package:portfolio_web/sample.dart';
 
 Widget lAbout(BuildContext context) {
-  return Container(
+  return SizedBox(
     height: MediaQuery.of(context).size.height,
     child: Column(
-      //center
-
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        SizedBox(height: 200),
+        const SizedBox(height: 200),
         aboutHeading(context),
-        SizedBox(
+        const SizedBox(
           height: 100,
         ),
         Row(
@@ -26,7 +18,6 @@ Widget lAbout(BuildContext context) {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             aboutContent(context),
-
             skillsContent(context),
             //HomePage(),
             // Add other widgets as needed
@@ -38,21 +29,19 @@ Widget lAbout(BuildContext context) {
 }
 
 Widget sAbout(BuildContext context) {
-  return Container(
-    child: Column(
-      //spaceevenly
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(height: 100),
-        aboutHeading(context),
-        aboutContent(context),
-        SizedBox(
-          height: 50,
-        ),
-        skillsContent(context),
-      ],
-      //content: HomeImageWidget()
-    ),
+  return Column(
+    //spaceevenly
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      const SizedBox(height: 100),
+      aboutHeading(context),
+      aboutContent(context),
+      const SizedBox(
+        height: 50,
+      ),
+      skillsContent(context),
+    ],
+    //content: HomeImageWidget()
   );
 }
