@@ -7,10 +7,10 @@ class HeaderButton extends StatelessWidget {
   final bool isSelected = false;
 
   const HeaderButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.press,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +41,11 @@ class SmallHeaderButton extends StatelessWidget {
   final bool isSelected;
 
   const SmallHeaderButton({
-    Key? key,
+    super.key,
     required this.text1,
     required this.press1,
     this.isSelected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
