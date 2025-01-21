@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:portfolio_web/views/home/homecomponents.dart';
-import 'package:portfolio_web/shared/constants.dart';
 import 'package:portfolio_web/views/medium/blogcomponents.dart';
 //import 'package:portfolio_web/sample.dart';
 
@@ -29,7 +26,7 @@ Widget sBlog(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         //content: HomeImageWidget(),
-        SizedBox(height: 100),
+        const SizedBox(height: 100),
         blogContent(context),
         //homeImage(context),
       ],

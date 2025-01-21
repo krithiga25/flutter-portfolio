@@ -1,11 +1,5 @@
-/*this file will only have two separate widgets to be returned when it's either smallscreen
-or largescreen. */
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-
 import 'package:portfolio_web/views/home/homecomponents.dart';
-import 'package:portfolio_web/shared/constants.dart';
 //import 'package:portfolio_web/sample.dart';
 
 Widget lHome(BuildContext context) {
@@ -24,16 +18,14 @@ Widget lHome(BuildContext context) {
 }
 
 Widget sHome(BuildContext context) {
-  return Container(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        //content: HomeImageWidget(),
-        homeContent(context),
-        //homeImage(context),
-      ],
-      //
-    ),
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      //content: HomeImageWidget(),
+      homeContent(context),
+      //homeImage(context),
+    ],
+    //
   );
 }

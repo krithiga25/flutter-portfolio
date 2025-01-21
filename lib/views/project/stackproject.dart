@@ -61,7 +61,7 @@ ProjectContent project3 = ProjectContent(
 ); */
 
 Widget lStackproject(BuildContext context) {
-  return Container(
+  return SizedBox(
     width: ResponsiveWidget.isSmallScreen(context)
         ? ScreenSize.screenWidth * 0.75
         : ScreenSize.screenWidth * 0.85,
@@ -75,8 +75,8 @@ Widget lStackproject(BuildContext context) {
             //give the height for small screen as well here and give heading
             height: ScreenSize.screenHeight * 0.70,
             autoPlay: true,
-            autoPlayInterval: Duration(seconds: 3),
-            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastOutSlowIn,
             onPageChanged: (index, reason) {},
             viewportFraction: 1.0,
@@ -172,7 +172,7 @@ Widget lStackproject(BuildContext context) {
 }
 
 Widget sStackProject(BuildContext context) {
-  return Container(
+  return SizedBox(
     width: ScreenSize.screenWidth * 0.75,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -184,8 +184,8 @@ Widget sStackProject(BuildContext context) {
             //give the height for small screen as well here and give heading
             height: ScreenSize.screenHeight * 0.70,
             autoPlay: true,
-            autoPlayInterval: Duration(seconds: 3),
-            autoPlayAnimationDuration: Duration(milliseconds: 800),
+            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
             autoPlayCurve: Curves.fastOutSlowIn,
             onPageChanged: (index, reason) {},
             viewportFraction: 1.0,
@@ -194,7 +194,7 @@ Widget sStackProject(BuildContext context) {
           items: projects.map((projects) {
             return Builder(
               builder: (BuildContext context) {
-                return Container(
+                return SizedBox(
                   width: ScreenSize.screenWidth * 0.75,
                   //margin: EdgeInsets.symmetric(horizontal: 5.0),
 

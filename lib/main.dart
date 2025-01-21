@@ -6,13 +6,15 @@ import "package:overlay_support/overlay_support.dart";
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return OverlaySupport(
+    return const OverlaySupport(
       child: MaterialApp(
         title: "Portfolio | Krithiga Perumal",
         debugShowCheckedModeBanner: false,

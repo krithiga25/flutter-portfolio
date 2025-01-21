@@ -8,7 +8,7 @@ import 'package:portfolio_web/shared/screensize.dart';
 
 stackImage(BuildContext context, {required String imagepath}) {
   return Container(
-    padding: EdgeInsets.symmetric(vertical: 20),
+    padding: const EdgeInsets.symmetric(vertical: 20),
     //alignment: Alignment,
     width: ResponsiveWidget.isSmallScreen(context)
         ? ScreenSize.screenWidth * 0.75
@@ -59,7 +59,7 @@ stackImage(BuildContext context, {required String imagepath}) {
 
 stackProjectContent(BuildContext context,
     {required String title, required String description}) {
-  return Container(
+  return SizedBox(
       width: ResponsiveWidget.isSmallScreen(context)
           ? ScreenSize.screenWidth * 0.75
           : ScreenSize.screenWidth * 0.32,
@@ -68,46 +68,45 @@ stackProjectContent(BuildContext context,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                padding: EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30),
                 child: Text(
                   title,
                   softWrap: true,
                   //textAlign: TextAlign.center,
-                  textScaleFactor: 1.5,
-                  style: TextStyle(
+                  textScaler: const TextScaler.linear(1.5),
+                  style: const TextStyle(
                       color: Colors.white,
                       height: 1.5,
                       fontWeight: FontWeight.w100),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            Container(
-                child: Text(
+            Text(
               description,
               softWrap: true,
               //textAlign: TextAlign.center,
-              textScaleFactor: 1,
-              style: TextStyle(color: Colors.white, height: 1.5),
-            )),
+             textScaler: const TextScaler.linear(1),
+              style: const TextStyle(color: Colors.white, height: 1.5),
+            ),
           ]));
 }
 
 projectHeading(BuildContext context) {
-  return Container(
+  return SizedBox(
     width: ResponsiveWidget.isSmallScreen(context)
         ? ScreenSize.screenWidth * 0.75
         : ScreenSize.screenWidth * 0.75,
     child: Column(children: [
-      SizedBox(
+      const SizedBox(
         height: 40,
       ),
       Container(
-        padding: EdgeInsets.only(top: 40, bottom: 5),
-        child: Text(
+        padding: const EdgeInsets.only(top: 40, bottom: 5),
+        child: const Text(
           //change font
           "PROJECTS",
-          textScaleFactor: 2,
+         textScaler: TextScaler.linear(2),
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -122,12 +121,12 @@ projectHeading(BuildContext context) {
         endIndent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
       ),
       //SizedBox(height: 20),
-      Center(
+      const Center(
           child: Text(
         'Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology ',
         softWrap: true,
         textAlign: TextAlign.center,
-        textScaleFactor: 1,
+      textScaler: TextScaler.linear(1),
         style: TextStyle(color: Colors.white, height: 1.5),
       )),
     ]),

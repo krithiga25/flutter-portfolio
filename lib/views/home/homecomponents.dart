@@ -1,11 +1,8 @@
 /*this file will the content inside the home screen. */
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:portfolio_web/shared/constants.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 import 'package:portfolio_web/shared/screensize.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 /* AnimatedTextKit( 
@@ -66,10 +63,10 @@ homeContent(BuildContext context) {
           // ),
           CircleAvatar(
             radius: circleWidth / 2.0,
-            backgroundImage: AssetImage('assets/profile.jpg'),
+            backgroundImage: const AssetImage('assets/profile.jpg'),
           ),
           Padding(
-            padding: EdgeInsets.only(bottom: 10, top: 50),
+            padding: const EdgeInsets.only(bottom: 10, top: 50),
             child: AnimatedTextKit(
               isRepeatingAnimation: false,
               animatedTexts: [
@@ -106,7 +103,7 @@ homeContent(BuildContext context) {
               textAlign: TextAlign.center,
               "I'm a Software Engineer working at Syncfusion Private Limited, fasinated in development with frontend and backend.",
               softWrap: true,
-              textScaleFactor: 1,
+              textScaler: TextScaler.linear(1),
               style: TextStyle(color: Colors.white, height: 1.5),
             ),
           ),

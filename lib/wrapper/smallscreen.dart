@@ -9,7 +9,10 @@ import 'package:portfolio_web/shared/screensize.dart';
 import 'package:portfolio_web/widgets/header.dart';
 
 class SmallScreen extends StatefulWidget {
+  const SmallScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SmallScreenState createState() => _SmallScreenState();
 }
 
@@ -18,7 +21,7 @@ class _SmallScreenState extends State<SmallScreen> {
   Widget build(BuildContext context) {
     ScreenSize().init(context);
 
-    List<Widget> _list = [
+    List<Widget> list = [
       sHome(context),
       sAbout(context),
       sStackProject(context),
@@ -28,7 +31,7 @@ class _SmallScreenState extends State<SmallScreen> {
     ];
     PageController controller = PageController(viewportFraction: 1.1);
 
-    AppBar _buildAppBar() {
+    AppBar buildAppBar() {
       return AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -56,7 +59,7 @@ class _SmallScreenState extends State<SmallScreen> {
         ],
       )),
       child: Scaffold(
-        appBar: _buildAppBar(),
+        appBar: buildAppBar(),
         backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         endDrawer: Drawer(
@@ -105,7 +108,7 @@ class _SmallScreenState extends State<SmallScreen> {
           scrollDirection: Axis.vertical,
           pageSnapping: false,
           controller: controller,
-          children: _list,
+          children: list,
         ),
       ),
     );

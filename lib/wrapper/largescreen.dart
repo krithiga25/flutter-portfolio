@@ -149,16 +149,16 @@ import 'package:portfolio_web/views/contact/contact.dart';
 import 'package:portfolio_web/shared/screensize.dart';
 import 'package:portfolio_web/widgets/header.dart';
 
-import 'dart:html' as html;
-
 import 'package:url_launcher/url_launcher.dart';
 
 class LargeScreen extends StatelessWidget {
+  const LargeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     ScreenSize().init(context);
 
-    List<Widget> _list = [
+    List<Widget> list = [
       lHome(context),
       lAbout(context),
       lStackproject(context),
@@ -301,15 +301,14 @@ class LargeScreen extends StatelessWidget {
                             letterSpacing: 1.25),
                       ),
                       onPressed: () async {
-                        if (await canLaunch(url)) {
-                          await launch(url);
+                        if (await canLaunchUrl(Uri.parse(url))) {
+                          await launchUrl(Uri.parse(url));
                         } else {
-                          // Handle error
-                          print('Could not launch $url');
+                          throw 'Could not launch $url';
                         }
                       },
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 50,
                     ),
                   ],
@@ -331,45 +330,38 @@ class LargeScreen extends StatelessWidget {
                           children: [
                             //github
                             IconButton(
-                              onPressed: () => html.window.open(
-                                  "https://github.com/krithiga25", "GitHub"),
-                              icon: Image.asset("assets/githubWhite.png"),
-                              iconSize: 20,
-                            ),
+                                onPressed: () => launchUrl(
+                                    Uri.parse("https://github.com/krithiga25")),
+                                icon: Image.asset("assets/githubWhite.png"),
+                                iconSize: 20),
                             //linkedin
                             IconButton(
-                              onPressed: () => html.window.open(
-                                  "https://www.linkedin.com/in/krithigaperumal/",
-                                  "LinkedIn"),
-                              icon: Image.asset("assets/linkedin.png"),
-                              iconSize: 20,
-                            ),
+                                onPressed: () => launchUrl(Uri.parse(
+                                    "https://www.linkedin.com/in/krithigaperumal/")),
+                                icon: Image.asset("assets/linkedin.png"),
+                                iconSize: 20),
                             //mail
                             IconButton(
-                              onPressed: () => html.window.open(
-                                  "https://github.com/krithiga25", "Mail"),
-                              icon: Image.asset("assets/mailWhite.png"),
-                              iconSize: 20,
-                            ),
+                                onPressed: () => launchUrl(
+                                    Uri.parse("https://github.com/krithiga25")),
+                                icon: Image.asset("assets/mailWhite.png"),
+                                iconSize: 20),
                             //medium
                             IconButton(
-                              onPressed: () => html.window.open(
-                                  "https://github.com/krithiga25", "Medium"),
-                              icon: Image.asset("assets/mediumWhite.png"),
-                              iconSize: 20,
-                            ),
+                                onPressed: () => launchUrl(
+                                    Uri.parse("https://github.com/krithiga25")),
+                                icon: Image.asset("assets/mediumWhite.png"),
+                                iconSize: 20),
                             IconButton(
-                              onPressed: () => html.window.open(
-                                  "https://github.com/krithiga25", "Medium"),
-                              icon: Image.asset("assets/instaWhite.png"),
-                              iconSize: 20,
-                            ),
+                                onPressed: () => launchUrl(
+                                    Uri.parse("https://github.com/krithiga25")),
+                                icon: Image.asset("assets/instaWhite.png"),
+                                iconSize: 20),
                             IconButton(
-                              onPressed: () => html.window.open(
-                                  "https://github.com/krithiga25", "Twitter"),
-                              icon: Image.asset("assets/twitter_white.png"),
-                              iconSize: 20,
-                            ),
+                                onPressed: () => launchUrl(
+                                    Uri.parse("https://github.com/krithiga25")),
+                                icon: Image.asset("assets/twitter_white.png"),
+                                iconSize: 20),
                             Container(
                               height: 200,
                               width: 3,
@@ -419,7 +411,7 @@ class LargeScreen extends StatelessWidget {
                     scrollDirection: Axis.vertical,
                     pageSnapping: false,
                     controller: controller,
-                    children: _list,
+                    children: list,
                   ),
                   //Header(controller),
                 ],
