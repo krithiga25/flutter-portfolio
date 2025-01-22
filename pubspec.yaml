@@ -28,6 +28,8 @@ dependencies:
   win32: ^5.10.0
 
 dev_dependencies:
+  build_runner: ^2.4.0
+  build_web_compilers: ^4.0.4
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
