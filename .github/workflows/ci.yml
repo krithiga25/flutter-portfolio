@@ -5,7 +5,7 @@ on:
       - main
   push:
     branches:
-     - main
+      - main
 
 jobs:
   flutter_test:
@@ -55,12 +55,19 @@ jobs:
       - run: flutter build appbundle
 
   build_docker:
-        name: Build and push Docker image
-        needs: [flutter_test]
-        runs-on: ubuntu-latest
-        steps:
-          - uses: actions/checkout@v2
-          - uses: actions/setup-docker@v1
-          - run: docker build -t krithigaperumal/flutter_docker:latest .
-          - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          - run: docker push krithigaperumal/flutter_docker:latest
+    name: Build and push Docker image
+    needs: [flutter_test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to Docker Hub
+        uses: actions/docker/login@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build and push Docker image
+        uses: actions/docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/flutter_docker:latest
