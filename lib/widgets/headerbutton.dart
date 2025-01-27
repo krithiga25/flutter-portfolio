@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/shared/constants.dart';
 
 class HeaderButton extends StatelessWidget {
-  final text;
-  final press;
+  final String text;
+  final VoidCallback press;
   final bool isSelected = false;
 
-  HeaderButton({
-    Key? key,
-    this.text,
-    this.press,
-  }) : super(key: key);
+  const HeaderButton({
+    super.key,
+    required this.text,
+    required this.press,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      padding: EdgeInsets.fromLTRB(10, 1, 10, 1),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.fromLTRB(10, 1, 10, 1),
       decoration: BoxDecoration(
         //color: ktransparent,
         border: Border.all(color: isSelected ? kblack : ktransparent),
@@ -36,22 +36,22 @@ class HeaderButton extends StatelessWidget {
 }
 
 class SmallHeaderButton extends StatelessWidget {
-  final text1;
-  final press1;
+  final String text1;
+  final VoidCallback press1;
   final bool isSelected;
 
-  SmallHeaderButton({
-    Key? key,
-    this.text1,
+  const SmallHeaderButton({
+    super.key,
+    required this.text1,
     required this.press1,
     this.isSelected = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      padding: EdgeInsets.fromLTRB(10, 1, 10, 1),
+      margin: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.fromLTRB(10, 1, 10, 1),
       child: TextButton(
         child: Text(
           text1,

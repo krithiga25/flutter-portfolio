@@ -1,17 +1,14 @@
 //how am i going to list the projects?
 
 //carousel cards
-import 'package:carousel_slider/carousel_state.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../shared/screensize.dart';
 import '../../wrapper/responsive.dart';
-import 'dart:html' as html;
 
 //created a class to store all the project details
 class ProjectContent {
@@ -31,12 +28,14 @@ final List<ProjectContent> projects = [
   ProjectContent(
     title:
         'Pitch Extraction and Notes Generation Implementation using Tensorflow',
-    description: 'Description for Project 1.',
+    description:
+        'Developed a deep learning-based system for pitch extraction, mode recognition, and note sequence generation using TensorFlow. Implemented neural networks with an attention mechanism to focus on humming pitches, enabling accurate transcription of melodies into sheet music. Leveraged pre-processed data to extract tune features and detect tonic, automating instrumental tone generation for specified instruments. Designed and optimized the model for efficient humming music retrieval and transcription, addressing challenges in melody detection and recognition.',
     imagePath: 'assets/articleone.jpg',
   ),
   ProjectContent(
-    title: 'Project 2',
-    description: 'Description for Project 2.',
+    title:
+        'Early Detection of Diabetic Retinopathy using Deep Convolutional Neural Network.',
+    description: 'I publisshed and presented a paper',
     imagePath: 'assets/articleone.jpg',
   ),
 ];
@@ -47,7 +46,7 @@ researchCards(BuildContext context) {
   double sWidth = ScreenSize.screenWidth * 0.75;
   double lWidth = ScreenSize.screenWidth * 0.32;
 
-  return Container(
+  return SizedBox(
       width: ResponsiveWidget.isSmallScreen(context)
           ? ScreenSize.screenWidth * 0.75
           //changed it to 0.32 from 0.20
@@ -65,83 +64,69 @@ researchCards(BuildContext context) {
                     ),
                   ),
               children: <Widget>[
-                Container(
-                  decoration: BoxDecoration(
-                      //color: Colors.white,
-                      //borderRadius: BorderRadius.circular(15.0),
-                      /* boxShadow: [
-                      BoxShadow(
-                        color: Colors.teal.withOpacity(1), // Shadow color
-                        spreadRadius: 4, // Spread radius
-                        blurRadius: 5, // Blur radius
-                        offset: Offset(0, 3), // Shadow offset
-                      ),
-                    ], */
-                      ),
-                  child: CarouselSlider(
-                    options: CarouselOptions(
-                        //height: MediaQuery.of(context).size.height,
-                        height: 400,
-                        autoPlay: true,
-                        autoPlayInterval: Duration(seconds: 3),
-                        autoPlayAnimationDuration: Duration(milliseconds: 800),
-                        autoPlayCurve: Curves.fastOutSlowIn,
-                        onPageChanged: (index, reason) {
-                          // Handle page change if needed
-                        },
-                        viewportFraction: 1.0),
-                    items: projects.map((project) {
-                      return Builder(
-                        builder: (BuildContext context) {
-                          return Container(
-                            width: isSmall ? sWidth : lWidth,
-                            //margin: EdgeInsets.symmetric(horizontal: 5.0),
-                            //padding: EdgeInsets.all(10),
-
-                            decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.8),
-                              //color: Colors.white,
-                              borderRadius: BorderRadius.circular(10.0),
-                              /* boxShadow: [
-                      BoxShadow(
-                        color: Colors.teal.withOpacity(1), // Shadow color
-                        spreadRadius: 4, // Spread radius
-                        blurRadius: 5, // Blur radius
-                        offset: Offset(0, 3), // Shadow offset
-                      ),
-                    ], */
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  project.title,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 24.0, color: Colors.purple),
-                                ),
-                                SizedBox(height: 10),
-                                Text(
-                                  project.description,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 16.0, color: Colors.purple),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    }).toList(),
-                  ),
+                CarouselSlider(
+                  options: CarouselOptions(
+                      //height: MediaQuery.of(context).size.height,
+                      height: 400,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 10),
+                      autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      onPageChanged: (index, reason) {
+                        // Handle page change if needed
+                      },
+                      viewportFraction: 1.0),
+                  items: projects.map((project) {
+                    return Builder(
+                      builder: (BuildContext context) {
+                        return Container(
+                          width: isSmall ? sWidth : lWidth,
+                          //margin: EdgeInsets.symmetric(horizontal: 5.0),
+                          //padding: EdgeInsets.all(10),
+                
+                          decoration: BoxDecoration(
+                            //color: Colors.white.withOpacity(0.8),
+                            //color: Colors.white,
+                            borderRadius: BorderRadius.circular(10.0),
+                            /* boxShadow: [
+                    BoxShadow(
+                      color: Colors.teal.withOpacity(1), // Shadow color
+                      spreadRadius: 4, // Spread radius
+                      blurRadius: 5, // Blur radius
+                      offset: Offset(0, 3), // Shadow offset
+                    ),
+                  ], */
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                project.title,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 24.0, color: Colors.white),
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                project.description,
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 16.0, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  }).toList(),
                 ),
                 //can create dots navigator to navigate to the slides and mention the selcted and unselected colours for the dots
               ])));
 }
 
 researchDescription(BuildContext context) {
-  return Container(
+  return SizedBox(
     width: ResponsiveWidget.isSmallScreen(context)
         ? ScreenSize.screenWidth * 0.75
         : ScreenSize.screenWidth * 0.32,
@@ -165,9 +150,8 @@ researchDescription(BuildContext context) {
                 ? TextAlign.center
                 : TextAlign.left,
             softWrap: true,
-            textScaleFactor: 1.1,
             text: TextSpan(children: [
-              TextSpan(
+              const TextSpan(
                   style: TextStyle(
                     color: Colors.white,
                     height: 1.5,
@@ -175,7 +159,7 @@ researchDescription(BuildContext context) {
                   text:
                       "Throughout my final year, I collaborated with my professors in several research projects and indulged in writing thesis papers. I presented the papers at "),
               TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.deepPurple,
                     height: 1.5,
@@ -183,46 +167,47 @@ researchDescription(BuildContext context) {
                   text: "international conferences",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      launch('https://www.linkedin.com/feed/');
+                      launchUrl(Uri.parse('https://www.linkedin.com/feed/'));
                     }),
-              TextSpan(
+              const TextSpan(
                   style: TextStyle(color: Colors.white, height: 1.5),
                   text: " and got them "),
               TextSpan(
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.deepPurple,
                       height: 1.5),
                   text: "published",
                   recognizer: TapGestureRecognizer()
                     ..onTap = () {
-                      launch(
-                          'https://scholar.google.com/citations?user=eaKLcP4AAAAJ&hl=en');
+                      launchUrl(
+                     Uri.parse(   'https://scholar.google.com/citations?user=eaKLcP4AAAAJ&hl=en')  );
                     }),
-              TextSpan(
+              const TextSpan(
                   style: TextStyle(color: Colors.white, height: 1.5),
                   text: " in reputed journals."),
-            ])),
+            ]),
+            textScaler: const TextScaler.linear(1.1)),
       ],
     ),
   );
 }
 
 researchHeading(BuildContext context) {
-  return Container(
+  return SizedBox(
     width: ResponsiveWidget.isSmallScreen(context)
         ? ScreenSize.screenWidth * 0.75
         : ScreenSize.screenWidth * 0.75,
     child: Column(children: [
-      SizedBox(
+      const SizedBox(
         height: 40,
       ),
       Container(
-        padding: EdgeInsets.only(top: 50, bottom: 5),
-        child: Text(
+        padding: const EdgeInsets.only(top: 50, bottom: 5),
+        child: const Text(
           //change font
           "RESEARCH WORK",
-          textScaleFactor: 2,
+          textScaler: TextScaler.linear(2),
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
