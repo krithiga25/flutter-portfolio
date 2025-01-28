@@ -147,7 +147,7 @@ import 'package:portfolio_web/views/about/about.dart';
 import 'package:portfolio_web/views/home/home.dart';
 import 'package:portfolio_web/views/contact/contact.dart';
 import 'package:portfolio_web/shared/screensize.dart';
-import 'package:portfolio_web/widgets/header.dart';
+import 'package:portfolio_web/widgets/header.dart'; 
 
 import 'package:url_launcher/url_launcher.dart';
 
