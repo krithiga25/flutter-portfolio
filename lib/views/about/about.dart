@@ -8,19 +8,15 @@ Widget lAbout(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        const SizedBox(height: 200),
-        aboutHeading(context),
-        const SizedBox(
-          height: 100,
-        ),
+        Padding(
+            padding: EdgeInsets.only(top: 100, bottom: 100),
+            child: aboutHeading(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             aboutContent(context),
-            skillsContent(context),
-            //HomePage(),
-            // Add other widgets as needed
+            techContent(context),
           ],
         ),
       ],
@@ -34,13 +30,10 @@ Widget sAbout(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
-      const SizedBox(height: 100),
+      const SizedBox(height: 50),
       aboutHeading(context),
       aboutContent(context),
-      const SizedBox(
-        height: 50,
-      ),
-      skillsContent(context),
+      techContent(context),
     ],
     //content: HomeImageWidget()
   );

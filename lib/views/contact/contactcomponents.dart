@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/widgets/defaultbutton.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 import 'package:portfolio_web/shared/screensize.dart';
@@ -25,13 +26,13 @@ contactContent(BuildContext context) {
           const SizedBox(
             height: 100,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(bottom: 10, top: 50),
             child: Text(
               //change font
               "Get In Touch",
-            textScaler: TextScaler.linear(3),
-              style: TextStyle(color: Colors.white),
+              textScaler: TextScaler.linear(2),
+              style: GoogleFonts.openSans(color: Colors.white, fontSize: 15),
             ),
           ),
 
@@ -41,38 +42,37 @@ contactContent(BuildContext context) {
                 textAlign: TextAlign.center,
                 softWrap: true,
                 text: TextSpan(children: [
-                  const TextSpan(
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                  TextSpan(
+                      style: GoogleFonts.openSans(
+                          color: Colors.white, height: 1.5),
                       text:
                           "I am open to Full-time opportunities and collaborations. If you're interested in connecting, feel free to reach out to me on "),
                   TextSpan(
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple,
-                      ),
+                      style: GoogleFonts.openSans(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.bold),
                       text: "LinkedIn",
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          launchUrl(Uri.parse('https://www.linkedin.com/feed/'));
+                          launchUrl(
+                              Uri.parse('https://www.linkedin.com/feed/'));
                         }),
-                  const TextSpan(
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                  TextSpan(
+                      style: GoogleFonts.openSans(
+                          color: Colors.white, height: 1.5),
                       text: " or drop me an "),
                   TextSpan(
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple,
-                      ),
+                      style: GoogleFonts.openSans(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.bold),
                       text: "Email",
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
-                          launchUrl(Uri.parse('mailto:krithiperu2002@gmail.com'));
+                          launchUrl(
+                              Uri.parse('mailto:krithiperu2002@gmail.com'));
                         }),
-                ]), textScaler: const TextScaler.linear(1.25)),
+                ]),
+                textScaler: const TextScaler.linear(1.2)),
           ),
 
           const SizedBox(
@@ -102,34 +102,35 @@ smallSocials(BuildContext context) {
           children: [
             IconButton(
                 onPressed: () =>
-                   launchUrl(Uri.parse("https://github.com/krithiga25")),
+                    launchUrl(Uri.parse("https://github.com/krithiga25")),
                 icon: Image.asset("assets/githubWhite.png"),
                 iconSize: 20),
             //linkedin
             IconButton(
-                onPressed: () =>launchUrl(
-                   Uri.parse( "https://www.linkedin.com/in/krithigaperumal/")),
+                onPressed: () => launchUrl(
+                    Uri.parse("https://www.linkedin.com/in/krithigaperumal/")),
                 icon: Image.asset("assets/linkedin.png"),
                 iconSize: 20),
             //mail
             IconButton(
                 onPressed: () =>
-                   launchUrl(Uri.parse("https://github.com/krithiga25")),
+                    launchUrl(Uri.parse("https://github.com/krithiga25")),
                 icon: Image.asset("assets/mailWhite.png"),
                 iconSize: 20),
             //medium
             IconButton(
                 onPressed: () =>
-                   launchUrl(Uri.parse("https://github.com/krithiga25")),
+                    launchUrl(Uri.parse("https://github.com/krithiga25")),
                 icon: Image.asset("assets/mediumWhite.png"),
                 iconSize: 20),
             IconButton(
                 onPressed: () =>
-                  launchUrl(Uri.parse("https://github.com/krithiga25")),
+                    launchUrl(Uri.parse("https://github.com/krithiga25")),
                 icon: Image.asset("assets/instaWhite.png"),
                 iconSize: 20),
             IconButton(
-                onPressed: () =>  launchUrl(Uri.parse("https://github.com/krithiga25")),
+                onPressed: () =>
+                    launchUrl(Uri.parse("https://github.com/krithiga25")),
                 icon: Image.asset("assets/twitter_white.png"),
                 iconSize: 20),
           ],
@@ -139,15 +140,13 @@ smallSocials(BuildContext context) {
             textAlign: TextAlign.center,
             softWrap: true,
             text: TextSpan(
-                style: const TextStyle(
-                  // fontWeight: FontWeight.bold,
-                  color: Colors.deepPurple,
-                ),
+                style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
                 text: 'Designed and built by Krithiga',
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {
                     launchUrl(Uri.parse("https://github.com/krithiga25"));
-                  }), textScaler: const TextScaler.linear(1)),
+                  }),
+            textScaler: const TextScaler.linear(1)),
       ],
     ),
   );
