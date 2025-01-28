@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/shared/constants.dart';
 
 class HeaderButton extends StatelessWidget {
@@ -56,7 +55,10 @@ class SmallHeaderButton extends StatelessWidget {
       child: TextButton(
         child: Text(
           text1,
-          style: GoogleFonts.openSans(color: Colors.white, letterSpacing: 1.25),
+          style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.25),
         ),
         onPressed: () {
           Navigator.pop(context);

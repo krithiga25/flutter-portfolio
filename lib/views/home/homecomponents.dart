@@ -4,7 +4,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 import 'package:portfolio_web/shared/screensize.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 /* AnimatedTextKit( 
 				animatedTexts: [ 
@@ -64,23 +63,20 @@ homeContent(BuildContext context) {
           // ),
           CircleAvatar(
             radius: circleWidth / 2.0,
-            backgroundImage: Image.asset(
-              'assets/profile_pic.jpg',
-              filterQuality: FilterQuality.high,
-            ).image,
+            backgroundImage: const AssetImage('assets/profile.jpg'),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 10, top: 50),
             child: AnimatedTextKit(
               isRepeatingAnimation: false,
               animatedTexts: [
-                TyperAnimatedText(
-                  "HEY, I'M KRITHIGA PERUMAL!",
-                  //speed: Duration(seconds: 3),
-                  textAlign: TextAlign.center,
-                  textStyle:
-                      GoogleFonts.openSans(color: Colors.white, fontSize: 30),
-                )
+                TyperAnimatedText("HEY, I'M KRITHIGA PERUMAL!",
+                    //speed: Duration(seconds: 3),
+                    textAlign: TextAlign.center,
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 30,
+                    ))
                 //backgroundColor: Colors.purple)),
                 /* TyperAnimatedText('You are viewing it here.',
                   textStyle: const TextStyle(
@@ -101,15 +97,14 @@ homeContent(BuildContext context) {
               textScaleFactor: 3,
             ), */
           //),
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(top: 10),
             child: Text(
               textAlign: TextAlign.center,
               "I'm a Software Engineer working at Syncfusion Private Limited, fasinated in development with frontend and backend.",
               softWrap: true,
               textScaler: TextScaler.linear(1),
-              style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
-              // style: TextStyle(color: Colors.white, height: 1.5),
+              style: TextStyle(color: Colors.white, height: 1.5),
             ),
           ),
         ],
