@@ -72,3 +72,40 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/flutter_docker:latest
+  
+  build_and_deploy:
+    name: Build Flutter Web
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.x  # Change this to your Flutter version
+          channel: stable
+
+      - name: Enable Flutter Web
+        run: flutter config --enable-web
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web
+        run: flutter build web --release
+
+      - name: Push to GitHub Pages Repo
+        run: |
+          git clone https://github.com/krithiga25/krithiga25.github.io.git deploy_repo
+          rm -rf deploy_repo/*
+          cp -r build/web/* deploy_repo/
+          cd deploy_repo
+          git config --global user.email "krithiperu2002@gmail.com"
+          git config --global user.name "krithiga25"
+          git add .
+          git commit -m "Auto-deploy from GitHub Actions"
+          git push https://${{ secrets.GH_TOKEN }}@github.com/krithiga25/krithiga25.github.io.git main
+        env:
+          your-github-token: ${{ secrets.GH_TOKEN }}
