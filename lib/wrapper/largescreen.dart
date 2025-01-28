@@ -140,14 +140,14 @@
 //   }
 // }
 import 'package:flutter/material.dart';
-// import 'package:portfolio_web/views/medium/blogs.dart';
-// import 'package:portfolio_web/views/research/research.dart';
+import 'package:portfolio_web/views/medium/blogs.dart';
+import 'package:portfolio_web/views/research/research.dart';
 import 'package:portfolio_web/views/project/stackproject.dart';
 import 'package:portfolio_web/views/about/about.dart';
 import 'package:portfolio_web/views/home/home.dart';
 import 'package:portfolio_web/views/contact/contact.dart';
 import 'package:portfolio_web/shared/screensize.dart';
-import 'package:portfolio_web/widgets/header.dart'; 
+import 'package:portfolio_web/widgets/header.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -162,8 +162,8 @@ class LargeScreen extends StatelessWidget {
       lHome(context),
       lAbout(context),
       lStackproject(context),
-      // lResearch(context),
-      // lBlog(context),
+      lResearch(context),
+      lBlog(context),
       lContact(context),
     ];
 
