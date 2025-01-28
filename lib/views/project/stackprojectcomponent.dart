@@ -1,60 +1,104 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 import 'package:portfolio_web/shared/screensize.dart';
+import 'package:url_launcher/url_launcher.dart';
 
-//create a separate function or a class for stack and the relevant description in the side.
+class ImageWidget extends StatefulWidget {
+  final String imagepath;
+  final String link;
 
-// make width for each container responsive.
+  const ImageWidget({super.key, required this.imagepath, required this.link});
 
-stackImage(BuildContext context, {required String imagepath}) {
-  return Container(
-    padding: const EdgeInsets.symmetric(vertical: 20),
-    //alignment: Alignment,
-    width: ResponsiveWidget.isSmallScreen(context)
-        ? ScreenSize.screenWidth * 0.75
-        : ScreenSize.screenWidth * 0.32,
-    //if i put this, the stack goes to the left side even i mention the allignment as topstart.
-    child: Stack(
-      //alignment: AlignmentDirectional.topCenter,
-      clipBehavior: Clip.none,
-      children: <Widget>[
-        Container(
-          //alignment: Alignment.bottomRight,
-          width: 350,
-          //ResponsiveWidget.isSmallScreen(context) ? 300 : 400,
-          height: ResponsiveWidget.isSmallScreen(context)
-              ? 300
-              : 400, // Adjust the height of the container below
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.white, width: 3), // Border styling
-            borderRadius:
-                BorderRadius.circular(10), // Adjust border radius as needed
-            color: Colors.transparent, // Transparent background
-          ),
-          // Add your content inside this container
-        ),
-        Positioned(
-          top: -30,
-          left: -20,
-          child: Container(
-            width: 350,
-            //ResponsiveWidget.isSmallScreen(context) ? 300 : 400,
-            height: ResponsiveWidget.isSmallScreen(context) ? 300 : 400,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              //shape: BoxShape.circle,
-              image: DecorationImage(
-                image: /* AssetImage(projects.imagepath), */
-                    AssetImage(imagepath), // Replace with your image path
-                fit: BoxFit.cover,
+  @override
+  ImageWidgetState createState() => ImageWidgetState();
+}
+
+class ImageWidgetState extends State<ImageWidget>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 200),
+    );
+    _scaleAnimation =
+        Tween<double>(begin: 1.0, end: 1.1).animate(_animationController);
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 20),
+      width: ResponsiveWidget.isSmallScreen(context)
+          ? ScreenSize.screenWidth * 0.75
+          : ScreenSize.screenWidth * 0.32,
+      child: MouseRegion(
+        onEnter: (event) {
+          _animationController.forward();
+        },
+        onExit: (event) {
+          _animationController.reverse();
+        },
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: <Widget>[
+            Container(
+              width: 350,
+              height: ResponsiveWidget.isSmallScreen(context) ? 300 : 400,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white, width: 3),
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.transparent,
               ),
             ),
-          ),
+            Positioned(
+              top: -30,
+              left: -20,
+              child: Container(
+                width: 350,
+                height: ResponsiveWidget.isSmallScreen(context) ? 300 : 400,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: AnimatedBuilder(
+                  animation: _scaleAnimation,
+                  builder: (context, child) {
+                    return Transform.scale(
+                      scale: _scaleAnimation.value,
+                      child: InkWell(
+                          onTap: () {
+                            launch(widget.link);
+                          },
+                          child: Image.asset(widget.imagepath)),
+                    );
+                  },
+                ),
+              ),
+            ),
+          ],
         ),
-        // ),
-      ],
-    ),
-  );
+      ),
+    );
+  }
+}
+
+launch(String link) async {
+  if (await canLaunchUrl(Uri.parse(link))) {
+    await launchUrl(Uri.parse(link));
+  } else {
+    throw 'Could not launch $link';
+  }
 }
 
 stackProjectContent(BuildContext context,
@@ -68,16 +112,14 @@ stackProjectContent(BuildContext context,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                padding: const EdgeInsets.only(top: 30),
+               padding: const EdgeInsets.only(top: 30),
                 child: Text(
                   title,
                   softWrap: true,
                   //textAlign: TextAlign.center,
-                  textScaler: const TextScaler.linear(1.5),
-                  style: const TextStyle(
-                      color: Colors.white,
-                      height: 1.5,
-                      fontWeight: FontWeight.w100),
+                 // textScaler: const TextScaler.linear(1.5),
+                  style: GoogleFonts.openSans(
+                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
                 )),
             const SizedBox(
               height: 10,
@@ -86,8 +128,8 @@ stackProjectContent(BuildContext context,
               description,
               softWrap: true,
               //textAlign: TextAlign.center,
-             textScaler: const TextScaler.linear(1),
-              style: const TextStyle(color: Colors.white, height: 1.5),
+              textScaler: const TextScaler.linear(1),
+              style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
             ),
           ]));
 }
@@ -103,14 +145,10 @@ projectHeading(BuildContext context) {
       ),
       Container(
         padding: const EdgeInsets.only(top: 40, bottom: 5),
-        child: const Text(
-          //change font
+        child: Text(
           "PROJECTS",
-         textScaler: TextScaler.linear(2),
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          textScaler: TextScaler.linear(2),
+          style: GoogleFonts.openSans(color: Colors.white, fontSize: 15),
         ),
       ),
       Divider(
@@ -120,14 +158,14 @@ projectHeading(BuildContext context) {
         indent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
         endIndent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
       ),
-      //SizedBox(height: 20),
-      const Center(
+      SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 20 : 0),
+      Center(
           child: Text(
         'Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology ',
         softWrap: true,
         textAlign: TextAlign.center,
-      textScaler: TextScaler.linear(1),
-        style: TextStyle(color: Colors.white, height: 1.5),
+        textScaler: TextScaler.linear(1),
+        style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
       )),
     ]),
   );

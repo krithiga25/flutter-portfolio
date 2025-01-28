@@ -8,35 +8,39 @@ class ProjectContent {
   final String title;
   final String description;
   String imagePath;
+  String link;
 
   ProjectContent({
     required this.title,
     required this.description,
     required this.imagePath,
+    required this.link,
   });
 }
 
 final List<ProjectContent> projects = [
   ProjectContent(
-    title: 'Pitch Extraction and Notes Generation using CRNN.',
-    description:
-        'Pitch Extraction and Notes Generation using CRNN.Pitch Extraction and Notes Generation using CRNN.',
-    imagePath: 'assets/articleone.jpg',
-  ),
+      title: 'Pitch Extraction and Notes Generation using CRNN.',
+      description:
+          'Pitch Extraction and Notes Generation using CRNN.Pitch Extraction and Notes Generation using CRNN.',
+      imagePath: 'assets/pitch_extraction.jpg',
+      link: 'https://github.com/krithiga25/AudioPitchExtractionSynthesis'),
   ProjectContent(
-    title: 'Project 2',
-    description: 'Description for Project 2.',
-    imagePath: 'assets/articleone.jpg',
-  ),
+      title: 'Gemini clone using React js',
+      description: 'Developed gemini clone using React js framework.',
+      imagePath: 'assets/Gemini_generated_gemini_clone.jpg',
+      link: 'https://github.com/krithiga25/react-gemini-clone'),
   ProjectContent(
-    title: 'Project 3',
-    description: 'Description for Project 3.',
-    imagePath: 'assets/articleone.jpg',
-  ),
+      title: 'Early Detection of Diabetic Retinopathy using DCNN.',
+      description:
+          'Early Detection of Diabetic Retinopathy using Deep Convolutional Neural Network. This is research based project.',
+      imagePath: 'assets/dr_dcnn.jpg',
+      link: 'https://link.springer.com/chapter/10.1007/978-3-031-73065-8_26'),
   ProjectContent(
     title: 'Project 4',
     description: 'Description for Project 4.',
-    imagePath: 'assets/articleone.jpg',
+    imagePath: 'assets/fs_mern.jpg',
+    link: 'https://github.com/krithiga25/mern-fs-project',
   ),
 ];
 
@@ -93,7 +97,7 @@ Widget lStackproject(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      stackImage(context, imagepath: projects.imagePath),
+                      ImageWidget(imagepath: projects.imagePath, link: projects.link),
                       //change the allignment of the description in the function
                       stackProjectContent(context,
                           title: projects.title,
@@ -202,7 +206,7 @@ Widget sStackProject(BuildContext context) {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      stackImage(context, imagepath: projects.imagePath),
+                      ImageWidget(imagepath: projects.imagePath, link: ""),
                       //change the allignment of the description in the function
                       stackProjectContent(context,
                           title: projects.title,
