@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/shared/screensize.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 
-Widget lExperienceHeading(BuildContext context) {
+Widget experienceHeading(BuildContext context) {
   return SizedBox(
     width: ResponsiveWidget.isSmallScreen(context)
         ? ScreenSize.screenWidth * 0.75
@@ -20,13 +20,13 @@ Widget lExperienceHeading(BuildContext context) {
           ),
         ),
         children: <Widget>[
-           Padding(
+          Padding(
             padding: EdgeInsets.only(bottom: 5),
             child: Center(
               child: Text(
                 "EXPERIENCE",
                 textScaler: TextScaler.linear(2),
-                style:  GoogleFonts.openSans(color: Colors.white, fontSize: 15),
+                style: GoogleFonts.openSans(color: Colors.white, fontSize: 15),
               ),
             ),
           ),
@@ -43,9 +43,8 @@ Widget lExperienceHeading(BuildContext context) {
   );
 }
 
-Widget lExperienceContent(BuildContext context) {
+Widget experienceContent(BuildContext context) {
   return Container(
-    
     padding: EdgeInsets.only(
         top: ResponsiveWidget.isSmallScreen(context) ? 50 : 50.0,
         bottom: 20,
@@ -66,44 +65,38 @@ Widget lExperienceContent(BuildContext context) {
           ),
         ),
         children: <Widget>[
-          //  textScaler: TextScaler.linear(1),
-          //  padding: EdgeInsets.only(top: 10),
-          //this column is only for the experience timeline.
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
+              Column(children: [
+                Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        Container(
-                          width: 12,
-                          height: 12,
-                          decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.white70,
-                                blurRadius: 10,
-                                spreadRadius: 4,
-                              ),
-                            ],
-                            shape: BoxShape.circle,
-                            border: Border.all(color: Colors.white, width: 3),
-                            color: Color(0xFF000435),
-                          ),
-                        ),
-                      ],
-                    ),
-                    // Vertical Line
                     Container(
-                      width: 1,
-                      height: ResponsiveWidget.isSmallScreen(context)?500:400,
-                      color: Colors.white,
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white70,
+                            blurRadius: 10,
+                            spreadRadius: 4,
+                          ),
+                        ],
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.white, width: 3),
+                        color: Color(0xFF000435),
+                      ),
                     ),
-                  ]),
+                  ],
+                ),
+                Container(
+                  width: 1,
+                  height: ResponsiveWidget.isSmallScreen(context) ? 500 : 400,
+                  color: Colors.white,
+                ),
+              ]),
               SizedBox(width: 20),
               Expanded(
                 child: Column(
@@ -116,7 +109,7 @@ Widget lExperienceContent(BuildContext context) {
                         "Syncfusion Software.",
                         textScaler: TextScaler.linear(1),
                         softWrap: true,
-                         style:  GoogleFonts.openSans(color: Colors.white70),
+                        style: GoogleFonts.openSans(color: Colors.white70),
                       ),
                     ),
                     Padding(
@@ -125,7 +118,7 @@ Widget lExperienceContent(BuildContext context) {
                         textScaler: TextScaler.linear(1),
                         "Feb 2024 - Present",
                         softWrap: true,
-                        style:  GoogleFonts.openSans(color: Colors.white70),
+                        style: GoogleFonts.openSans(color: Colors.white70),
                       ),
                     ),
                     Padding(
@@ -134,7 +127,8 @@ Widget lExperienceContent(BuildContext context) {
                         textScaler: TextScaler.linear(1.25),
                         "Software Engineer Developer",
                         softWrap: true,
-                         style:  GoogleFonts.openSans(color: Colors.white, fontWeight: FontWeight.bold),
+                        style: GoogleFonts.openSans(
+                            color: Colors.white, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Padding(
@@ -143,14 +137,15 @@ Widget lExperienceContent(BuildContext context) {
                         textScaler: TextScaler.linear(1),
                         "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
                         softWrap: true,
-                         style:  GoogleFonts.openSans(color: Colors.white, height: 1.5),
+                        style: GoogleFonts.openSans(
+                            color: Colors.white, height: 1.5),
                       ),
                     ),
                     Text(
                       textScaler: TextScaler.linear(1),
                       "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
                       softWrap: true,
-                      style:  GoogleFonts.openSans(color: Colors.white),
+                      style: GoogleFonts.openSans(color: Colors.white),
                     ),
                   ],
                 ),
@@ -184,15 +179,14 @@ skillsContent(BuildContext context) {
   double lWidth = ScreenSize.screenWidth * 0.32;
   return Container(
       width: isSmall ? sWidth : lWidth,
-      //i changed here: before: edgeInsets.all(16)
       padding: EdgeInsets.only(
           top: 50.0,
           bottom: 20,
           left: ResponsiveWidget.isSmallScreen(context) ? 50 : 0),
       child: Column(
         mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.center,
+            ? MainAxisAlignment.start
+            : MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: AnimationConfiguration.toStaggeredList(
           duration: const Duration(milliseconds: 1000),
@@ -202,48 +196,49 @@ skillsContent(BuildContext context) {
             ),
           ),
           children: [
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
                 'Frameworks and Libraries',
                 textScaler: TextScaler.linear(1.25),
-                style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                style: GoogleFonts.openSans(
+                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: Text(
                 '• Flutter • React • Nodejs • Expressjs',
                 textScaler: TextScaler.linear(1),
-                style:  GoogleFonts.openSans(color: Colors.white, height: 1.5),
+                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
                 'Programming Languages',
                 textScaler: TextScaler.linear(1.25),
-                style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                style: GoogleFonts.openSans(
+                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: Text(
                 '• Dart • Javascript • C#',
                 textScaler: TextScaler.linear(1),
-                 style:  GoogleFonts.openSans(color: Colors.white, height: 1.5),
+                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
                 'Technical skills',
                 textScaler: TextScaler.linear(1.25),
-                 style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                style: GoogleFonts.openSans(
+                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
               ),
             ),
-
-            //SizedBox(height: 8.0),
             Wrap(
               spacing: 7,
               runSpacing: 7,
@@ -253,7 +248,10 @@ skillsContent(BuildContext context) {
                   color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(skill,  style:  GoogleFonts.openSans(color: Colors.black),),
+                    child: Text(
+                      skill,
+                      style: GoogleFonts.openSans(color: Colors.black),
+                    ),
                   ),
                 );
               }).toList(),

@@ -13,12 +13,9 @@ class DefaultButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //padding: EdgeInsets.all(10),
       margin: const EdgeInsets.symmetric(horizontal: 5),
       padding: const EdgeInsets.fromLTRB(10, 1, 10, 1),
       decoration: BoxDecoration(
-          //color: Color.fromARGB(255, 12, 20, 65)
-          //borderRadius: BorderRadius.circular(10),
           borderRadius: BorderRadius.circular(10),
           gradient: const LinearGradient(
             begin: Alignment.topLeft,

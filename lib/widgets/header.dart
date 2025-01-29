@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-// a file where a component name is pressed it takes to that page.
-// when project in the scaffhold is pressed it take to project page.
-
 import 'package:portfolio_web/widgets/defaultbutton.dart';
 import 'package:portfolio_web/widgets/headerbutton.dart';
 
@@ -17,7 +13,6 @@ List<Widget> navButtons(PageController controller) {
         "HOME",
         style: GoogleFonts.openSans(color: Colors.white, letterSpacing: 1.25),
       ),
-      //where is this each page numbered?
       onPressed: () => controller.animateToPage(0,
           duration: const Duration(milliseconds: 1200),
           curve: Curves.easeInOutSine),

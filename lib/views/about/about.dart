@@ -26,7 +26,6 @@ Widget lAbout(BuildContext context) {
 
 Widget sAbout(BuildContext context) {
   return Column(
-    //spaceevenly
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
@@ -35,6 +34,5 @@ Widget sAbout(BuildContext context) {
       aboutContent(context),
       techContent(context),
     ],
-    //content: HomeImageWidget()
   );
 }

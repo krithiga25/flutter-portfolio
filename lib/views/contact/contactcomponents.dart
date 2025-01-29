@@ -13,8 +13,6 @@ contactContent(BuildContext context) {
         ? ScreenSize.screenWidth * 0.75
         : ScreenSize.screenWidth * 0.75,
     child: Column(
-      //mainAxisAlignment: MainAxisAlignment.start,
-      //crossAxisAlignment: CrossAxisAlignment.center,
       children: AnimationConfiguration.toStaggeredList(
         duration: const Duration(milliseconds: 1000),
         childAnimationBuilder: (widget) => SlideAnimation(
@@ -29,13 +27,11 @@ contactContent(BuildContext context) {
           Padding(
             padding: EdgeInsets.only(bottom: 10, top: 50),
             child: Text(
-              //change font
               "Get In Touch",
               textScaler: TextScaler.linear(2),
               style: GoogleFonts.openSans(color: Colors.white, fontSize: 15),
             ),
           ),
-
           Container(
             padding: const EdgeInsets.only(top: 20),
             child: RichText(
@@ -74,11 +70,9 @@ contactContent(BuildContext context) {
                 ]),
                 textScaler: const TextScaler.linear(1.2)),
           ),
-
           const SizedBox(
             height: 50,
           ),
-          //maybe use a different button
           DefaultButton(
               text: "Say Hello",
               press: () {
@@ -92,8 +86,6 @@ contactContent(BuildContext context) {
 
 smallSocials(BuildContext context) {
   return SizedBox(
-    // margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
-    //color: Colors.white,
     width: ScreenSize.screenWidth * 0.8,
     child: Column(
       children: [
@@ -140,7 +132,8 @@ smallSocials(BuildContext context) {
             textAlign: TextAlign.center,
             softWrap: true,
             text: TextSpan(
-                style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                style: GoogleFonts.openSans(
+                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
                 text: 'Designed and built by Krithiga',
                 recognizer: TapGestureRecognizer()
                   ..onTap = () {

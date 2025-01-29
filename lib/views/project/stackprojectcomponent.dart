@@ -112,14 +112,14 @@ stackProjectContent(BuildContext context,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-               padding: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 30),
                 child: Text(
                   title,
                   softWrap: true,
-                  //textAlign: TextAlign.center,
-                 // textScaler: const TextScaler.linear(1.5),
                   style: GoogleFonts.openSans(
-                      color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 )),
             const SizedBox(
               height: 10,
@@ -127,7 +127,6 @@ stackProjectContent(BuildContext context,
             Text(
               description,
               softWrap: true,
-              //textAlign: TextAlign.center,
               textScaler: const TextScaler.linear(1),
               style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
             ),

@@ -19,7 +19,6 @@ class HeaderButton extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 5),
       padding: const EdgeInsets.fromLTRB(10, 1, 10, 1),
       decoration: BoxDecoration(
-        //color: ktransparent,
         border: Border.all(color: isSelected ? kblack : ktransparent),
       ),
       child: TextButton(

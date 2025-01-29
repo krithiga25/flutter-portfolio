@@ -33,10 +33,8 @@ class LargeScreen extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
-              //pinned: true,
               floating: true,
               snap: true,
-              //expandedHeight: 150.0,
               backgroundColor: Colors.transparent,
               actions: [
                 Row(
