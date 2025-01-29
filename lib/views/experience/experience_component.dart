@@ -5,10 +5,10 @@ import 'package:portfolio_web/shared/screensize.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 
 Widget experienceHeading(BuildContext context) {
+  final isSmall = ResponsiveWidget.isSmallScreen(context);
   return SizedBox(
-    width: ResponsiveWidget.isSmallScreen(context)
-        ? ScreenSize.screenWidth * 0.75
-        : ScreenSize.screenWidth * 0.75,
+    width:
+        isSmall ? ScreenSize.screenWidth * 0.75 : ScreenSize.screenWidth * 0.75,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,8 +34,8 @@ Widget experienceHeading(BuildContext context) {
             height: 20.0,
             thickness: 4.0,
             color: Colors.white,
-            indent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
-            endIndent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
+            indent: isSmall ? 150 : 400,
+            endIndent: isSmall ? 150 : 400,
           ),
         ],
       ),
@@ -43,19 +43,16 @@ Widget experienceHeading(BuildContext context) {
   );
 }
 
-Widget experienceContent(BuildContext context) {
+Widget experienceContent(BuildContext context, {PageController? controller}) {
+  final isSmall = ResponsiveWidget.isSmallScreen(context);
   return Container(
     padding: EdgeInsets.only(
-        top: ResponsiveWidget.isSmallScreen(context) ? 50 : 50.0,
-        bottom: 20,
-        left: ResponsiveWidget.isSmallScreen(context) ? 50 : 50),
-    width: ResponsiveWidget.isSmallScreen(context)
-        ? ScreenSize.screenWidth * 0.75
-        : ScreenSize.screenWidth * 0.32,
+        top: isSmall ? 50 : 50.0, bottom: 20, left: isSmall ? 50 : 50),
+    width:
+        isSmall ? ScreenSize.screenWidth * 0.75 : ScreenSize.screenWidth * 0.32,
     child: Column(
-      mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.center,
+      mainAxisAlignment:
+          isSmall ? MainAxisAlignment.start : MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: AnimationConfiguration.toStaggeredList(
         duration: const Duration(milliseconds: 1000),
@@ -65,90 +62,113 @@ Widget experienceContent(BuildContext context) {
           ),
         ),
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Stack(
             children: [
-              Column(children: [
-                Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    Container(
-                      width: 12,
-                      height: 12,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.white70,
-                            blurRadius: 10,
-                            spreadRadius: 4,
+              if (isSmall)
+                Positioned(
+                  bottom: 16,
+                  right: 16,
+                  child: IconButton(
+                    onPressed: () => controller?.animateToPage(1,
+                        duration: const Duration(milliseconds: 1200),
+                        curve: Curves.easeInOutSine),
+                    icon: RotatedBox(
+                      quarterTurns: 3,
+                      child: Icon(
+                        Icons.expand_more,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(children: [
+                    Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        Container(
+                          width: 12,
+                          height: 12,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white70,
+                                blurRadius: 10,
+                                spreadRadius: 4,
+                              ),
+                            ],
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white, width: 3),
+                            color: Color(0xFF000435),
                           ),
-                        ],
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Colors.white, width: 3),
-                        color: Color(0xFF000435),
-                      ),
+                        ),
+                      ],
                     ),
-                  ],
-                ),
-                Container(
-                  width: 1,
-                  height: ResponsiveWidget.isSmallScreen(context) ? 500 : 400,
-                  color: Colors.white,
-                ),
-              ]),
-              SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
-                      child: Text(
-                        "Syncfusion Software.",
-                        textScaler: TextScaler.linear(1),
-                        softWrap: true,
-                        style: GoogleFonts.openSans(color: Colors.white70),
-                      ),
+                    Container(
+                      width: 1,
+                      height: isSmall ? 500 : 400,
+                      color: Colors.white,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        textScaler: TextScaler.linear(1),
-                        "Feb 2024 - Present",
-                        softWrap: true,
-                        style: GoogleFonts.openSans(color: Colors.white70),
-                      ),
+                  ]),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 6),
+                          child: Text(
+                            "Syncfusion Software.",
+                            textScaler: TextScaler.linear(1),
+                            softWrap: true,
+                            style: GoogleFonts.openSans(color: Colors.white70),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            textScaler: TextScaler.linear(1),
+                            "Feb 2024 - Present",
+                            softWrap: true,
+                            style: GoogleFonts.openSans(color: Colors.white70),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            textScaler: TextScaler.linear(1.25),
+                            "Software Engineer Developer",
+                            softWrap: true,
+                            style: GoogleFonts.openSans(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            textScaler: TextScaler.linear(1),
+                            "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
+                            softWrap: true,
+                            style: GoogleFonts.openSans(
+                                color: Colors.white, height: 1.5),
+                          ),
+                        ),
+                        Text(
+                          textScaler: TextScaler.linear(1),
+                          "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
+                          softWrap: true,
+                          style: GoogleFonts.openSans(color: Colors.white),
+                        ),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        textScaler: TextScaler.linear(1.25),
-                        "Software Engineer Developer",
-                        softWrap: true,
-                        style: GoogleFonts.openSans(
-                            color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        textScaler: TextScaler.linear(1),
-                        "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
-                        softWrap: true,
-                        style: GoogleFonts.openSans(
-                            color: Colors.white, height: 1.5),
-                      ),
-                    ),
-                    Text(
-                      textScaler: TextScaler.linear(1),
-                      "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
-                      softWrap: true,
-                      style: GoogleFonts.openSans(color: Colors.white),
-                    ),
-                  ],
-                ),
+                  )
+                ],
               )
             ],
           )
@@ -179,14 +199,10 @@ skillsContent(BuildContext context) {
   double lWidth = ScreenSize.screenWidth * 0.32;
   return Container(
       width: isSmall ? sWidth : lWidth,
-      padding: EdgeInsets.only(
-          top: 50.0,
-          bottom: 20,
-          left: ResponsiveWidget.isSmallScreen(context) ? 50 : 0),
+      padding: EdgeInsets.only(top: 50.0, bottom: 20, left: isSmall ? 50 : 0),
       child: Column(
-        mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
-            ? MainAxisAlignment.start
-            : MainAxisAlignment.center,
+        mainAxisAlignment:
+            isSmall ? MainAxisAlignment.start : MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: AnimationConfiguration.toStaggeredList(
           duration: const Duration(milliseconds: 1000),

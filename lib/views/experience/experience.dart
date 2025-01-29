@@ -27,6 +27,7 @@ Widget lExperience(BuildContext context) {
 }
 
 Widget sExperience(BuildContext context) {
+  PageController controller = PageController();
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -37,8 +38,9 @@ Widget sExperience(BuildContext context) {
       ),
       Expanded(
         child: PageView(
+          controller: controller,
           children: [
-            experienceContent(context),
+            experienceContent(context, controller: controller),
             skillsContent(context),
           ],
         ),
