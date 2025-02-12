@@ -68,6 +68,7 @@ class LargeScreen extends StatelessWidget {
                                   Uri.parse("https://github.com/krithiga25")),
                               icon: Image.asset(
                                 "assets/githubWhite.png",
+                                color: Colors.white70,
                                 width: 24,
                                 height: 24,
                               ),
@@ -78,6 +79,7 @@ class LargeScreen extends StatelessWidget {
                                   "https://www.linkedin.com/in/krithigaperumal/")),
                               icon: Image.asset(
                                 "assets/linkedin.png",
+                                color: Colors.white70,
                                 width: 24,
                                 height: 24,
                               ),
@@ -89,6 +91,7 @@ class LargeScreen extends StatelessWidget {
                               ),
                               icon: Image.asset(
                                 "assets/mailWhite.png",
+                                color: Colors.white70,
                                 width: 24,
                                 height: 24,
                               ),
@@ -98,26 +101,32 @@ class LargeScreen extends StatelessWidget {
                                 onPressed: () => launchUrl(Uri.parse(
                                     "https://medium.com/@krithigaperumal")),
                                 icon: Image.asset("assets/mediumWhite.png",
-                                    width: 24, height: 24),
+                                    color: Colors.white70,
+                                    width: 24,
+                                    height: 24),
                                 iconSize: 20),
                             IconButton(
                                 onPressed: () => launchUrl(Uri.parse(
                                     "https://www.instagram.com/krithiga.perumal?igsh=MWg1NDBwbWdqcGR1bQ==")),
                                 icon: Image.asset("assets/instaWhite.png",
-                                    width: 24, height: 24),
+                                    color: Colors.white70,
+                                    width: 24,
+                                    height: 24),
                                 iconSize: 20),
                             IconButton(
                                 onPressed: () => launchUrl(
                                     Uri.parse("x.com/krithigaperumal")),
                                 icon: Image.asset("assets/twitter_white.png",
-                                    width: 24, height: 24),
+                                    color: Colors.white70,
+                                    width: 24,
+                                    height: 24),
                                 iconSize: 20),
                             Container(
                               height: 250,
                               width: 3,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10.0),
-                                color: Colors.white,
+                                color: Colors.white70,
                               ),
                               margin:
                                   const EdgeInsets.symmetric(horizontal: 15),
@@ -139,7 +148,7 @@ class LargeScreen extends StatelessWidget {
                           child: Text(
                             "krithiperu2002@gmail.com",
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.white70,
                                 fontSize: 16.0,
                                 letterSpacing: 3.0),
                           ),
@@ -150,7 +159,7 @@ class LargeScreen extends StatelessWidget {
                           width: 3,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10.0),
-                            color: Colors.white,
+                            color: Colors.white70,
                           ),
                           margin: const EdgeInsets.symmetric(horizontal: 10),
                         )

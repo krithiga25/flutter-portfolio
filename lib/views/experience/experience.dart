@@ -10,7 +10,7 @@ Widget lExperience(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 50, bottom: 50),
+          padding: const EdgeInsets.only(top: 50, bottom: 35),
           child: experienceHeading(context),
         ),
         Row(

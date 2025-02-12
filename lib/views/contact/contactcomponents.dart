@@ -40,7 +40,7 @@ contactContent(BuildContext context) {
                 text: TextSpan(children: [
                   TextSpan(
                       style: GoogleFonts.openSans(
-                          color: Colors.white, height: 1.5),
+                          color: Colors.white, height: 1.25),
                       text:
                           "I am open to Full-time opportunities and collaborations. If you're interested in connecting, feel free to reach out to me on "),
                   TextSpan(
@@ -55,7 +55,7 @@ contactContent(BuildContext context) {
                         }),
                   TextSpan(
                       style: GoogleFonts.openSans(
-                          color: Colors.white, height: 1.5),
+                          color: Colors.white, height: 1.25),
                       text: " or drop me an "),
                   TextSpan(
                       style: GoogleFonts.openSans(

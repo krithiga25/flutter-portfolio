@@ -31,11 +31,11 @@ Widget experienceHeading(BuildContext context) {
             ),
           ),
           Divider(
-            height: 20.0,
-            thickness: 4.0,
+            height: isSmall ? 10 : 20,
+            thickness: isSmall ? 3 : 4,
             color: Colors.white,
-            indent: isSmall ? 150 : 400,
-            endIndent: isSmall ? 150 : 400,
+            indent: isSmall ? 80 : 400,
+            endIndent: isSmall ? 80 : 400,
           ),
         ],
       ),
@@ -44,10 +44,20 @@ Widget experienceHeading(BuildContext context) {
 }
 
 Widget experienceContent(BuildContext context, {PageController? controller}) {
+  List<String> points = [
+    "• Developed key features like Sticky Note Annotation, Smart Fill, AI Summarization, and Smart Reduct in the PDF Viewer product.",
+    "• Improved cross-platform support with Linux compatibility and WebAssembly (WASM) integration.",
+    "• Optimized PDF rendering performance on Windows (C#) and Android (Java), reducing load times.",
+    "• Contributed to the Syncfusion Flutter Components Showcase (Web, Android, iOS) with new features.",
+    "• Followed Scrum practices, actively participating in sprint planning, daily stand-ups, retrospectives, and backlog grooming."
+  ];
   final isSmall = ResponsiveWidget.isSmallScreen(context);
   return Container(
     padding: EdgeInsets.only(
-        top: isSmall ? 50 : 50.0, bottom: 20, left: isSmall ? 50 : 50),
+        top: isSmall ? 40 : 30.0,
+        bottom: 20,
+        left: isSmall ? 50 : 50,
+        right: isSmall ? 30 : 0),
     width:
         isSmall ? ScreenSize.screenWidth * 0.75 : ScreenSize.screenWidth * 0.32,
     child: Column(
@@ -66,8 +76,8 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
             children: [
               if (isSmall)
                 Positioned(
-                  bottom: 16,
-                  right: 16,
+                  bottom: -17,
+                  right: 6,
                   child: IconButton(
                     onPressed: () => controller?.animateToPage(1,
                         duration: const Duration(milliseconds: 1200),
@@ -110,7 +120,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                     ),
                     Container(
                       width: 1,
-                      height: isSmall ? 500 : 400,
+                      height: isSmall ? 500 : 460,
                       color: Colors.white,
                     ),
                   ]),
@@ -145,7 +155,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                             "Software Engineer Developer",
                             softWrap: true,
                             style: GoogleFonts.openSans(
-                                color: Colors.white,
+                                color: Color.fromARGB(255, 148, 89, 250),
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -153,18 +163,28 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(
                             textScaler: TextScaler.linear(1),
-                            "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
+                            "Product: Essential Studios – Syncfusion Flutter PDF Viewer ",
                             softWrap: true,
-                            style: GoogleFonts.openSans(
-                                color: Colors.white, height: 1.5),
+                            style: GoogleFonts.openSans(color: Colors.white70),
                           ),
                         ),
-                        Text(
-                          textScaler: TextScaler.linear(1),
-                          "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
-                          softWrap: true,
-                          style: GoogleFonts.openSans(color: Colors.white),
-                        ),
+                        Column(
+                          children: [
+                            ...points.map((point) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    textScaler: isSmall
+                                        ? TextScaler.linear(0.95)
+                                        : TextScaler.linear(1),
+                                    point,
+                                    softWrap: true,
+                                    style: GoogleFonts.openSans(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        )
                       ],
                     ),
                   )
@@ -179,19 +199,17 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
 }
 
 skillsContent(BuildContext context) {
-  List<String> skills = [
-    'Flutter',
-    'Dart',
-    'Javascript',
-    'Java',
+  List skills = [
     'Git',
-    'React',
-    'Nodejs',
-    'Expressjs',
-    'MongoDB',
-    'Tailwind CSS',
+    'Github',
     'Firebase',
+    'CI/CD',
+    'AWS Storage',
+    'Dart DevTools',
     'Prompt Engineering',
+    'Xcode',
+    'Android Studio',
+    'Visual Studio',
     'Product Development',
   ];
   bool isSmall = ResponsiveWidget.isSmallScreen(context);
@@ -199,7 +217,11 @@ skillsContent(BuildContext context) {
   double lWidth = ScreenSize.screenWidth * 0.32;
   return Container(
       width: isSmall ? sWidth : lWidth,
-      padding: EdgeInsets.only(top: 50.0, bottom: 20, left: isSmall ? 50 : 0),
+      padding: EdgeInsets.only(
+        top: 30.0,
+        bottom: 20,
+        left: isSmall ? 50 : 0,
+      ),
       child: Column(
         mainAxisAlignment:
             isSmall ? MainAxisAlignment.start : MainAxisAlignment.center,
@@ -215,16 +237,35 @@ skillsContent(BuildContext context) {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
-                'Frameworks and Libraries',
-                textScaler: TextScaler.linear(1.25),
+                'Programming Languages & Frameworks',
+                textScaler: TextScaler.linear(isSmall ? 1.15 : 1.25),
                 style: GoogleFonts.openSans(
-                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: Text(
-                '• Flutter • React • Nodejs • Expressjs',
+                '• Dart    • Javascript   • C#    • Flutter',
+                textScaler: TextScaler.linear(1),
+                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 10, right: isSmall ? 10 : 0),
+              child: Text(
+                'Cross-Platform & Plugin Development',
+                textScaler: TextScaler.linear(isSmall ? 1.15 : 1.25),
+                style: GoogleFonts.openSans(
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 25, right: isSmall ? 10 : 0),
+              child: Text(
+                '• Android SDK tools    • Flutter Plugin Development',
                 textScaler: TextScaler.linear(1),
                 style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
@@ -232,16 +273,17 @@ skillsContent(BuildContext context) {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
-                'Programming Languages',
-                textScaler: TextScaler.linear(1.25),
+                'Testing & Automation',
+                textScaler: TextScaler.linear(isSmall ? 1.15 : 1.25),
                 style: GoogleFonts.openSans(
-                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(bottom: 25),
+              padding: EdgeInsets.only(bottom: 25, right: isSmall ? 10 : 0),
               child: Text(
-                '• Dart • Javascript • C#',
+                '• Flutter Driver   • Mockito   • UI Automation   • Golden Widget Testing\n• Integration Testing',
                 textScaler: TextScaler.linear(1),
                 style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
@@ -252,7 +294,8 @@ skillsContent(BuildContext context) {
                 'Technical skills',
                 textScaler: TextScaler.linear(1.25),
                 style: GoogleFonts.openSans(
-                    color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
               ),
             ),
             Wrap(
@@ -266,7 +309,8 @@ skillsContent(BuildContext context) {
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
                       skill,
-                      style: GoogleFonts.openSans(color: Colors.black),
+                      style: GoogleFonts.openSans(
+                          color: Colors.grey[850], fontWeight: FontWeight.bold),
                     ),
                   ),
                 );

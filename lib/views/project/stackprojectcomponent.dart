@@ -39,7 +39,7 @@ class ImageWidgetState extends State<ImageWidget>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.only(top: 20),
       width: ResponsiveWidget.isSmallScreen(context)
           ? ScreenSize.screenWidth * 0.75
           : ScreenSize.screenWidth * 0.32,
@@ -101,10 +101,11 @@ launch(String link) async {
   }
 }
 
-stackProjectContent(BuildContext context,
-    {required String title, required String description}) {
+stackProjectContent(BuildContext context, String title,
+    {String? lScreenDescription, String? sScreenDescription}) {
+  bool isSmall = ResponsiveWidget.isSmallScreen(context);
   return SizedBox(
-      width: ResponsiveWidget.isSmallScreen(context)
+      width: isSmall
           ? ScreenSize.screenWidth * 0.75
           : ScreenSize.screenWidth * 0.32,
       child: Column(
@@ -125,7 +126,7 @@ stackProjectContent(BuildContext context,
               height: 10,
             ),
             Text(
-              description,
+              isSmall ? sScreenDescription! : lScreenDescription!,
               softWrap: true,
               textScaler: const TextScaler.linear(1),
               style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
@@ -134,10 +135,10 @@ stackProjectContent(BuildContext context,
 }
 
 projectHeading(BuildContext context) {
+  bool isSmall = ResponsiveWidget.isSmallScreen(context);
   return SizedBox(
-    width: ResponsiveWidget.isSmallScreen(context)
-        ? ScreenSize.screenWidth * 0.75
-        : ScreenSize.screenWidth * 0.75,
+    width:
+        isSmall ? ScreenSize.screenWidth * 0.75 : ScreenSize.screenWidth * 0.75,
     child: Column(children: [
       const SizedBox(
         height: 40,
@@ -151,21 +152,21 @@ projectHeading(BuildContext context) {
         ),
       ),
       Divider(
-        height: 20.0,
-        thickness: 4.0,
+        height: isSmall ? 10 : 20,
+        thickness: isSmall ? 3 : 4,
         color: Colors.white,
-        indent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
-        endIndent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
+        indent: isSmall ? 80 : 400,
+        endIndent: isSmall ? 80 : 400,
       ),
-      SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 20 : 0),
-      Center(
-          child: Text(
-        'Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology ',
-        softWrap: true,
-        textAlign: TextAlign.center,
-        textScaler: TextScaler.linear(1),
-        style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
-      )),
+      if (!isSmall)
+        Center(
+            child: Text(
+          'Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology ',
+          softWrap: true,
+          textAlign: TextAlign.center,
+          textScaler: TextScaler.linear(1),
+          style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
+        )),
     ]),
   );
 }
