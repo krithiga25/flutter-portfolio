@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-// a file where a component name is pressed it takes to that page.
-// when project in the scaffhold is pressed it take to project page.
-
 import 'package:portfolio_web/widgets/defaultbutton.dart';
 import 'package:portfolio_web/widgets/headerbutton.dart';
 
 const url =
-    "https://firebasestorage.googleapis.com/v0/b/portfoliokrithi.appspot.com/o/Resume%20India.pdf?alt=media&token=a83fa583-b779-4e11-bc96-bb95439bff9a";
+    // "https://firebasestorage.googleapis.com/v0/b/portfoliokrithi.appspot.com/o/Resume%20India.pdf?alt=media&token=a83fa583-b779-4e11-bc96-bb95439bff9a";
+    "https://www.dropbox.com/scl/fi/a3utguvdzkdc40zyq72uh/Krithiga-Perumal-Resume_2025.pdf?rlkey=2nxyl388f02hba14zm0sj8tjt&st=0oeklqin&dl=0";
 List<Widget> navButtons(PageController controller) {
   return [
     TextButton(
@@ -17,7 +14,6 @@ List<Widget> navButtons(PageController controller) {
         "HOME",
         style: GoogleFonts.openSans(color: Colors.white, letterSpacing: 1.25),
       ),
-      //where is this each page numbered?
       onPressed: () => controller.animateToPage(0,
           duration: const Duration(milliseconds: 1200),
           curve: Curves.easeInOutSine),

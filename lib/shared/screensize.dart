@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-//a file to get the size of the screen whenever it is deformed.
-// uses mediaquery
-
 class ScreenSize {
   static late MediaQueryData _mediaQueryData;
   static late double screenWidth;

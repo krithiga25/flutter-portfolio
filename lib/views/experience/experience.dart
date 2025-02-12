@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/views/experience/experience_component.dart';
-//import 'package:portfolio_web/sample.dart';
 
 Widget lExperience(BuildContext context) {
   return Container(
@@ -11,14 +10,14 @@ Widget lExperience(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 50, bottom: 50),
-          child: lExperienceHeading(context),
+          padding: const EdgeInsets.only(top: 50, bottom: 35),
+          child: experienceHeading(context),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            lExperienceContent(context),
+            experienceContent(context),
             skillsContent(context),
           ],
         ),
@@ -28,19 +27,20 @@ Widget lExperience(BuildContext context) {
 }
 
 Widget sExperience(BuildContext context) {
+  PageController controller = PageController();
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
-     
       Padding(
-        padding: const EdgeInsets.only(top:120),
-        child: lExperienceHeading(context),
+        padding: const EdgeInsets.only(top: 120),
+        child: experienceHeading(context),
       ),
       Expanded(
         child: PageView(
+          controller: controller,
           children: [
-            lExperienceContent(context),
+            experienceContent(context, controller: controller),
             skillsContent(context),
           ],
         ),

@@ -9,7 +9,7 @@ Widget lAbout(BuildContext context) {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Padding(
-            padding: EdgeInsets.only(top: 100, bottom: 100),
+            padding: EdgeInsets.only(top: 100, bottom: 50),
             child: aboutHeading(context)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -26,15 +26,14 @@ Widget lAbout(BuildContext context) {
 
 Widget sAbout(BuildContext context) {
   return Column(
-    //spaceevenly
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
       const SizedBox(height: 50),
       aboutHeading(context),
-      aboutContent(context),
+      Padding(
+          padding: EdgeInsets.only(bottom: 25), child: aboutContent(context)),
       techContent(context),
     ],
-    //content: HomeImageWidget()
   );
 }

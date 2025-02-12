@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/views/home/homecomponents.dart';
-//import 'package:portfolio_web/sample.dart';
 
 Widget lHome(BuildContext context) {
   return Container(
@@ -10,7 +9,6 @@ Widget lHome(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        //another widget
         homeContent(context),
       ],
     ),
@@ -22,9 +20,7 @@ Widget sHome(BuildContext context) {
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
-      //content: HomeImageWidget(),
       homeContent(context),
-      //homeImage(context),
     ],
     //
   );

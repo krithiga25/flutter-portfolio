@@ -4,11 +4,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/shared/screensize.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
 
-Widget lExperienceHeading(BuildContext context) {
+Widget experienceHeading(BuildContext context) {
+  final isSmall = ResponsiveWidget.isSmallScreen(context);
   return SizedBox(
-    width: ResponsiveWidget.isSmallScreen(context)
-        ? ScreenSize.screenWidth * 0.75
-        : ScreenSize.screenWidth * 0.75,
+    width:
+        isSmall ? ScreenSize.screenWidth * 0.75 : ScreenSize.screenWidth * 0.75,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -20,22 +20,22 @@ Widget lExperienceHeading(BuildContext context) {
           ),
         ),
         children: <Widget>[
-           Padding(
+          Padding(
             padding: EdgeInsets.only(bottom: 5),
             child: Center(
               child: Text(
                 "EXPERIENCE",
                 textScaler: TextScaler.linear(2),
-                style:  GoogleFonts.openSans(color: Colors.white, fontSize: 15),
+                style: GoogleFonts.openSans(color: Colors.white, fontSize: 15),
               ),
             ),
           ),
           Divider(
-            height: 20.0,
-            thickness: 4.0,
+            height: isSmall ? 10 : 20,
+            thickness: isSmall ? 3 : 4,
             color: Colors.white,
-            indent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
-            endIndent: ResponsiveWidget.isSmallScreen(context) ? 150 : 400,
+            indent: isSmall ? 80 : 400,
+            endIndent: isSmall ? 80 : 400,
           ),
         ],
       ),
@@ -43,20 +43,26 @@ Widget lExperienceHeading(BuildContext context) {
   );
 }
 
-Widget lExperienceContent(BuildContext context) {
+Widget experienceContent(BuildContext context, {PageController? controller}) {
+  List<String> points = [
+    "• Developed key features like Sticky Note Annotation, Smart Fill, AI Summarization, and Smart Reduct in the PDF Viewer product.",
+    "• Improved cross-platform support with Linux compatibility and WebAssembly (WASM) integration.",
+    "• Optimized PDF rendering performance on Windows (C#) and Android (Java), reducing load times.",
+    "• Contributed to the Syncfusion Flutter Components Showcase (Web, Android, iOS) with new features.",
+    "• Followed Scrum practices, actively participating in sprint planning, daily stand-ups, retrospectives, and backlog grooming."
+  ];
+  final isSmall = ResponsiveWidget.isSmallScreen(context);
   return Container(
-    
     padding: EdgeInsets.only(
-        top: ResponsiveWidget.isSmallScreen(context) ? 50 : 50.0,
+        top: isSmall ? 40 : 30.0,
         bottom: 20,
-        left: ResponsiveWidget.isSmallScreen(context) ? 50 : 50),
-    width: ResponsiveWidget.isSmallScreen(context)
-        ? ScreenSize.screenWidth * 0.75
-        : ScreenSize.screenWidth * 0.32,
+        left: isSmall ? 50 : 50,
+        right: isSmall ? 30 : 0),
+    width:
+        isSmall ? ScreenSize.screenWidth * 0.75 : ScreenSize.screenWidth * 0.32,
     child: Column(
-      mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.center,
+      mainAxisAlignment:
+          isSmall ? MainAxisAlignment.start : MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: AnimationConfiguration.toStaggeredList(
         duration: const Duration(milliseconds: 1000),
@@ -66,16 +72,31 @@ Widget lExperienceContent(BuildContext context) {
           ),
         ),
         children: <Widget>[
-          //  textScaler: TextScaler.linear(1),
-          //  padding: EdgeInsets.only(top: 10),
-          //this column is only for the experience timeline.
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Stack(
             children: [
-              Column(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+              if (isSmall)
+                Positioned(
+                  bottom: -17,
+                  right: 6,
+                  child: IconButton(
+                    onPressed: () => controller?.animateToPage(1,
+                        duration: const Duration(milliseconds: 1200),
+                        curve: Curves.easeInOutSine),
+                    icon: RotatedBox(
+                      quarterTurns: 3,
+                      child: Icon(
+                        Icons.expand_more,
+                        color: Colors.white,
+                        size: 30,
+                      ),
+                    ),
+                  ),
+                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Column(children: [
                     Stack(
                       alignment: Alignment.center,
                       children: [
@@ -97,63 +118,77 @@ Widget lExperienceContent(BuildContext context) {
                         ),
                       ],
                     ),
-                    // Vertical Line
                     Container(
                       width: 1,
-                      height: ResponsiveWidget.isSmallScreen(context)?500:400,
+                      height: isSmall ? 500 : 460,
                       color: Colors.white,
                     ),
                   ]),
-              SizedBox(width: 20),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 6),
-                      child: Text(
-                        "Syncfusion Software.",
-                        textScaler: TextScaler.linear(1),
-                        softWrap: true,
-                         style:  GoogleFonts.openSans(color: Colors.white70),
-                      ),
+                  SizedBox(width: 20),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 6),
+                          child: Text(
+                            "Syncfusion Software.",
+                            textScaler: TextScaler.linear(1),
+                            softWrap: true,
+                            style: GoogleFonts.openSans(color: Colors.white70),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            textScaler: TextScaler.linear(1),
+                            "Feb 2024 - Present",
+                            softWrap: true,
+                            style: GoogleFonts.openSans(color: Colors.white70),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            textScaler: TextScaler.linear(1.25),
+                            "Software Engineer Developer",
+                            softWrap: true,
+                            style: GoogleFonts.openSans(
+                                color: Color.fromARGB(255, 148, 89, 250),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Text(
+                            textScaler: TextScaler.linear(1),
+                            "Product: Essential Studios – Syncfusion Flutter PDF Viewer ",
+                            softWrap: true,
+                            style: GoogleFonts.openSans(color: Colors.white70),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            ...points.map((point) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    textScaler: isSmall
+                                        ? TextScaler.linear(0.95)
+                                        : TextScaler.linear(1),
+                                    point,
+                                    softWrap: true,
+                                    style: GoogleFonts.openSans(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        )
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        textScaler: TextScaler.linear(1),
-                        "Feb 2024 - Present",
-                        softWrap: true,
-                        style:  GoogleFonts.openSans(color: Colors.white70),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        textScaler: TextScaler.linear(1.25),
-                        "Software Engineer Developer",
-                        softWrap: true,
-                         style:  GoogleFonts.openSans(color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Text(
-                        textScaler: TextScaler.linear(1),
-                        "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
-                        softWrap: true,
-                         style:  GoogleFonts.openSans(color: Colors.white, height: 1.5),
-                      ),
-                    ),
-                    Text(
-                      textScaler: TextScaler.linear(1),
-                      "• Worked on building cross-platform mobile applications. Developed enterprise-level software solutions.",
-                      softWrap: true,
-                      style:  GoogleFonts.openSans(color: Colors.white),
-                    ),
-                  ],
-                ),
+                  )
+                ],
               )
             ],
           )
@@ -164,19 +199,17 @@ Widget lExperienceContent(BuildContext context) {
 }
 
 skillsContent(BuildContext context) {
-  List<String> skills = [
-    'Flutter',
-    'Dart',
-    'Javascript',
-    'Java',
+  List skills = [
     'Git',
-    'React',
-    'Nodejs',
-    'Expressjs',
-    'MongoDB',
-    'Tailwind CSS',
+    'Github',
     'Firebase',
+    'CI/CD',
+    'AWS Storage',
+    'Dart DevTools',
     'Prompt Engineering',
+    'Xcode',
+    'Android Studio',
+    'Visual Studio',
     'Product Development',
   ];
   bool isSmall = ResponsiveWidget.isSmallScreen(context);
@@ -184,15 +217,14 @@ skillsContent(BuildContext context) {
   double lWidth = ScreenSize.screenWidth * 0.32;
   return Container(
       width: isSmall ? sWidth : lWidth,
-      //i changed here: before: edgeInsets.all(16)
       padding: EdgeInsets.only(
-          top: 50.0,
-          bottom: 20,
-          left: ResponsiveWidget.isSmallScreen(context) ? 50 : 0),
+        top: 30.0,
+        bottom: 20,
+        left: isSmall ? 50 : 0,
+      ),
       child: Column(
-        mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.center,
+        mainAxisAlignment:
+            isSmall ? MainAxisAlignment.start : MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: AnimationConfiguration.toStaggeredList(
           duration: const Duration(milliseconds: 1000),
@@ -202,48 +234,70 @@ skillsContent(BuildContext context) {
             ),
           ),
           children: [
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
-                'Frameworks and Libraries',
-                textScaler: TextScaler.linear(1.25),
-                style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                'Programming Languages & Frameworks',
+                textScaler: TextScaler.linear(isSmall ? 1.15 : 1.25),
+                style: GoogleFonts.openSans(
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: Text(
-                '• Flutter • React • Nodejs • Expressjs',
+                '• Dart    • Javascript   • C#    • Flutter',
                 textScaler: TextScaler.linear(1),
-                style:  GoogleFonts.openSans(color: Colors.white, height: 1.5),
+                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
             ),
-             Padding(
+            Padding(
+              padding: EdgeInsets.only(bottom: 10, right: isSmall ? 10 : 0),
+              child: Text(
+                'Cross-Platform & Plugin Development',
+                textScaler: TextScaler.linear(isSmall ? 1.15 : 1.25),
+                style: GoogleFonts.openSans(
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 25, right: isSmall ? 10 : 0),
+              child: Text(
+                '• Android SDK tools    • Flutter Plugin Development',
+                textScaler: TextScaler.linear(1),
+                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
+              ),
+            ),
+            Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
-                'Programming Languages',
-                textScaler: TextScaler.linear(1.25),
-                style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                'Testing & Automation',
+                textScaler: TextScaler.linear(isSmall ? 1.15 : 1.25),
+                style: GoogleFonts.openSans(
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
               ),
             ),
-             Padding(
-              padding: EdgeInsets.only(bottom: 25),
+            Padding(
+              padding: EdgeInsets.only(bottom: 25, right: isSmall ? 10 : 0),
               child: Text(
-                '• Dart • Javascript • C#',
+                '• Flutter Driver   • Mockito   • UI Automation   • Golden Widget Testing\n• Integration Testing',
                 textScaler: TextScaler.linear(1),
-                 style:  GoogleFonts.openSans(color: Colors.white, height: 1.5),
+                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
             ),
-             Padding(
+            Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
                 'Technical skills',
                 textScaler: TextScaler.linear(1.25),
-                 style:  GoogleFonts.openSans(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                style: GoogleFonts.openSans(
+                    color: Color.fromARGB(255, 148, 89, 250),
+                    fontWeight: FontWeight.bold),
               ),
             ),
-
-            //SizedBox(height: 8.0),
             Wrap(
               spacing: 7,
               runSpacing: 7,
@@ -253,7 +307,11 @@ skillsContent(BuildContext context) {
                   color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(skill,  style:  GoogleFonts.openSans(color: Colors.black),),
+                    child: Text(
+                      skill,
+                      style: GoogleFonts.openSans(
+                          color: Colors.grey[850], fontWeight: FontWeight.bold),
+                    ),
                   ),
                 );
               }).toList(),

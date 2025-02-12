@@ -6,63 +6,53 @@ import 'package:portfolio_web/wrapper/responsive.dart';
 
 class ProjectContent {
   final String title;
-  final String description;
   String imagePath;
   String link;
+  String lScreenDescription;
+  String sScreenDescription;
 
   ProjectContent({
     required this.title,
-    required this.description,
     required this.imagePath,
     required this.link,
+    this.lScreenDescription = '',
+    this.sScreenDescription = '',
   });
 }
 
 final List<ProjectContent> projects = [
   ProjectContent(
       title: 'Pitch Extraction and Notes Generation using CRNN.',
-      description:
-          'Pitch Extraction and Notes Generation using CRNN.Pitch Extraction and Notes Generation using CRNN.',
+      sScreenDescription:
+          '• Pitch Extraction of human melody audio using Convulutional Recurrent Neural Network (CRNN).',
+      lScreenDescription:
+          '• Melody Extraction: Utilized a Convolutional Recurrent Neural Network (CRNN) to extract human melodies from audio recordings.\n\n • Instrumental Note Generation: Leveraged Python libraries to generate instrumental notes based on the extracted melodies.\n\n• Full-Stack Development: Designed and built a user-friendly frontend with Flutter, and integrated it with a backend API that interfaces with the deep learning model.\n\n• Real-Time Audio Processing: Enabled users to record live audio through the app, which is then processed by the model to generate instrumental audio and corresponding notes.',
       imagePath: 'assets/pitch_extraction.jpg',
       link: 'https://github.com/krithiga25/AudioPitchExtractionSynthesis'),
   ProjectContent(
       title: 'Gemini clone using React js',
-      description: 'Developed gemini clone using React js framework.',
+      sScreenDescription:
+          '• A React JS implementation of the Gemini app, showcasing a similar user interface and user experience.\n• Users can input their questions or prompts, which are then processed using the Google Gemini API to produce accurate and informative answers.',
+      lScreenDescription:
+          '• A React JS implementation of the Gemini app, showcasing a similar user interface and user experience.\n• Users can input their questions or prompts, which are then processed using the Google Gemini API to produce accurate and informative answers.',
       imagePath: 'assets/Gemini_generated_gemini_clone.jpg',
       link: 'https://github.com/krithiga25/react-gemini-clone'),
   ProjectContent(
-      title: 'Early Detection of Diabetic Retinopathy using DCNN.',
-      description:
-          'Early Detection of Diabetic Retinopathy using Deep Convolutional Neural Network. This is research based project.',
+      title: 'Early Detection of DR using DCNN.',
+      lScreenDescription:
+          '• Detection of Diabetic Retinopathy: Built a model using Deep Convolutional Neural Network (DCNN) algorithm to identify Diabetic Retinopathy from fundus images of the eye.\n\n• User-Friendly Interface: Users can input fundus images to determine if the retina shows signs of Diabetic Retinopathy.\n\n• International Conference Presentation: Presented this research at the International Conference on Advances in Artificial Intelligence & Machine Learning in Big Data Processing (AAIMB 2023).\n\n• Published in Springer Series: This research was published in the Springer series, as a contribution to the field of artificial intelligence and machine learning.',
+      sScreenDescription:
+          '• Built a model using Deep Convolutional Neural Network algorithm to identify Diabetic Retinopathy from fundus images of the eye.\n• This is a research based project, presented in international conference and published in the Springer series, ',
       imagePath: 'assets/dr_dcnn.jpg',
       link: 'https://link.springer.com/chapter/10.1007/978-3-031-73065-8_26'),
-  ProjectContent(
-    title: 'Project 4',
-    description: 'Description for Project 4.',
-    imagePath: 'assets/fs_mern.jpg',
-    link: 'https://github.com/krithiga25/mern-fs-project',
-  ),
+  // ProjectContent(
+  //   title: 'A full stack MERN project.',
+  //   lScreenDescription: 'A full stack MERN project.',
+  //   sScreenDescription: 'A full stack MERN project.',
+  //   imagePath: 'assets/fs_mern.jpg',
+  //   link: 'https://github.com/krithiga25/mern-fs-project',
+  // ),
 ];
-
-/* ProjectContent project1 = ProjectContent(
-  title: 'Pitch Extraction and Notes Generation using CRNN',
-  description:
-      'Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology',
-  imagePath: 'assets/profile.jpg',
-);
-
-ProjectContent project2 = ProjectContent(
-  title: 'My Project',
-  description:
-      'Here you will find more information about me, what I do, and my current skills mostly in terms of programming and technology',
-  imagePath: 'assets/profile.jpg',
-);
-
-ProjectContent project3 = ProjectContent(
-  title: 'My Project',
-  description: 'This is a sample project',
-  imagePath: 'assets/profile.jpg',
-); */
 
 Widget lStackproject(BuildContext context) {
   return SizedBox(
@@ -71,12 +61,10 @@ Widget lStackproject(BuildContext context) {
         : ScreenSize.screenWidth * 0.85,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         projectHeading(context),
         CarouselSlider(
           options: CarouselOptions(
-            //give the height for small screen as well here and give heading
             height: ScreenSize.screenHeight * 0.70,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 3),
@@ -85,23 +73,23 @@ Widget lStackproject(BuildContext context) {
             onPageChanged: (index, reason) {},
             viewportFraction: 1.0,
           ),
-          //here we are passing a list of info that has info for next next card
           items: projects.map((projects) {
             return Builder(
               builder: (BuildContext context) {
                 return Container(
                   width: ScreenSize.screenWidth * 0.85,
-                  //margin: EdgeInsets.symmetric(horizontal: 5.0),
                   color: Colors.transparent,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      ImageWidget(imagepath: projects.imagePath, link: projects.link),
-                      //change the allignment of the description in the function
-                      stackProjectContent(context,
-                          title: projects.title,
-                          description: projects.description)
+                      ImageWidget(
+                          imagepath: projects.imagePath, link: projects.link),
+                      stackProjectContent(
+                        context,
+                        projects.title,
+                        lScreenDescription: projects.lScreenDescription,
+                      )
                     ],
                   ),
                 );
@@ -112,67 +100,6 @@ Widget lStackproject(BuildContext context) {
       ],
     ),
   );
-  /* Container(
-      // height: (MediaQuery.of(context).size.height) * 2,
-      padding: const EdgeInsets.only(top: 10),
-      child: SingleChildScrollView(
-        //physics: NeverScrollableScrollPhysics(),
-        child: Column(
-            //mainaxisalignement?
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              projectHeading(context),
-              //write a function for this?
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  stackImage(context, imagepath: project1.imagePath),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  stackProjectContent(context,
-                      title: project1.title, description: project1.description)
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  stackProjectContent(context,
-                      title: project2.title, description: project2.description),
-                  stackImage(
-                    context,
-                    imagepath: project2.imagePath,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  stackImage(
-                    context,
-                    imagepath: project3.imagePath,
-                  ),
-                  SizedBox(
-                    width: 20,
-                  ),
-                  stackProjectContent(context,
-                      title: project2.title, description: project2.description)
-                ],
-              ),
-              SizedBox(
-                height: 40,
-              ),
-            ]),
-      )); */
 }
 
 Widget sStackProject(BuildContext context) {
@@ -185,7 +112,6 @@ Widget sStackProject(BuildContext context) {
         projectHeading(context),
         CarouselSlider(
           options: CarouselOptions(
-            //give the height for small screen as well here and give heading
             height: ScreenSize.screenHeight * 0.70,
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 3),
@@ -194,23 +120,19 @@ Widget sStackProject(BuildContext context) {
             onPageChanged: (index, reason) {},
             viewportFraction: 1.0,
           ),
-          //here we are passing a list of info that has info for next next card
           items: projects.map((projects) {
             return Builder(
               builder: (BuildContext context) {
                 return SizedBox(
                   width: ScreenSize.screenWidth * 0.75,
-                  //margin: EdgeInsets.symmetric(horizontal: 5.0),
-
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ImageWidget(imagepath: projects.imagePath, link: ""),
-                      //change the allignment of the description in the function
-                      stackProjectContent(context,
-                          title: projects.title,
-                          description: projects.description)
+                      ImageWidget(
+                          imagepath: projects.imagePath, link: projects.link),
+                      stackProjectContent(context, projects.title,
+                          sScreenDescription: projects.sScreenDescription)
                     ],
                   ),
                 );
