@@ -24,6 +24,8 @@ class SmallScreenState extends State<SmallScreen> {
       sAbout(context),
       sExperience(context),
       sStackProject(context),
+      sStackProject2(context),
+      sStackProject3(context),
       sContact(context),
     ];
     PageController controller = PageController(viewportFraction: 1.1);

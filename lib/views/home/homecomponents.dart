@@ -47,7 +47,7 @@ homeContent(BuildContext context) {
             padding: EdgeInsets.only(top: 10),
             child: Text(
               textAlign: TextAlign.center,
-              "Software Development Engineer specializing in cross-platform app development. I love building intuitive applications that solve real-world problems with clean, efficient code.",
+              "Software Engineer specializing in cross-platform app development. I love building intuitive applications that solve real-world problems with clean, efficient code.",
               softWrap: true,
               textScaler: TextScaler.linear(1.1),
               style: GoogleFonts.openSans(color: Colors.white, height: 1.5),

@@ -3,6 +3,7 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:portfolio_web/shared/screensize.dart';
 import 'package:portfolio_web/wrapper/responsive.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 Widget experienceHeading(BuildContext context) {
   final isSmall = ResponsiveWidget.isSmallScreen(context);
@@ -44,12 +45,21 @@ Widget experienceHeading(BuildContext context) {
 }
 
 Widget experienceContent(BuildContext context, {PageController? controller}) {
-  List<String> points = [
-    "• Developed key features like Sticky Note Annotation, Smart Fill, AI Summarization, and Smart Reduct in the PDF Viewer product.",
-    "• Improved cross-platform support with Linux compatibility and WebAssembly (WASM) integration.",
-    "• Optimized PDF rendering performance on Windows (C#) and Android (Java), reducing load times.",
-    "• Contributed to the Syncfusion Flutter Components Showcase (Web, Android, iOS) with new features.",
-    "• Followed Scrum practices, actively participating in sprint planning, daily stand-ups, retrospectives, and backlog grooming."
+  final pdfViewerPoints = [
+    "- Optimized encrypted PDF loading, reducing Windows load time from 30s to 4s and fixing Android hang issues.",
+    "- Built sticky note annotation using custom RenderObject trees for accurate rendering in the PDF viewport.",
+    //"Integrated AI features including Smart Fill, summarization, and Smart Redact using LLM APIs.",
+    "- Implemented Linux platform support via Flutter method channels for cross-desktop compatibility.",
+    "- Improved rendering performance through native integrations using Java (Android) and Swift/Obj-C++ (iOS).",
+    //"Resolved high-priority customer issues and critical bugs improving plugin stability.",
+    //"- Maintained integration tests, automation scripts, and golden tests for UI consistency.",
+    //"Worked in Agile sprints with regular scrum and retrospectives for iterative feature delivery.",
+  ];
+
+  final widgetsPoints = [
+    "- Contributed to the Syncfusion Flutter Widgets demo app published on Google Play and Apple App Store.",
+    "- Built an expense tracker sample showcasing charts, data grids, and date pickers for real-world usage.",
+    "- Developed an interactive stock chart demo demonstrating real-time visualization and optimized rendering.",
   ];
   final isSmall = ResponsiveWidget.isSmallScreen(context);
   return Container(
@@ -143,7 +153,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(
                             textScaler: TextScaler.linear(1),
-                            "Feb 2024 - Present",
+                            "Feb 2024 - Jan 2026",
                             softWrap: true,
                             style: GoogleFonts.openSans(color: Colors.white70),
                           ),
@@ -152,7 +162,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Text(
                             textScaler: TextScaler.linear(1.25),
-                            "Software Engineer Developer",
+                            "Software Engineer",
                             softWrap: true,
                             style: GoogleFonts.openSans(
                                 color: Color.fromARGB(255, 148, 89, 250),
@@ -160,17 +170,38 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: Text(
-                            textScaler: TextScaler.linear(1),
-                            "Product: Essential Studios – Syncfusion Flutter PDF Viewer ",
-                            softWrap: true,
-                            style: GoogleFonts.openSans(color: Colors.white70),
-                          ),
-                        ),
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Product: Syncfusion Flutter PDF Viewer",
+                                  style: GoogleFonts.openSans(
+                                    color: Colors.white70,
+                                    fontSize: isSmall ? 13 : 14.5,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                IconButton(
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(),
+                                  icon: const Icon(
+                                    Icons.open_in_new,
+                                    size: 16,
+                                    color: Colors.white70,
+                                  ),
+                                  onPressed: () {
+                                    launchUrl(
+                                      Uri.parse(
+                                        'https://pub.dev/packages/syncfusion_flutter_pdfviewer',
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            )),
                         Column(
                           children: [
-                            ...points.map((point) => Padding(
+                            ...pdfViewerPoints.map((point) => Padding(
                                   padding: const EdgeInsets.only(bottom: 10),
                                   child: Text(
                                     textScaler: isSmall
@@ -179,6 +210,55 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                                     point,
                                     softWrap: true,
                                     style: GoogleFonts.openSans(
+                                      fontSize: isSmall ? 12 : 13,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ))
+                          ],
+                        ),
+                        Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Product: Syncfusion Flutter UI Widgets",
+                                  style: GoogleFonts.openSans(
+                                    color: Colors.white70,
+                                    fontSize: isSmall ? 13 : 14.5,
+                                  ),
+                                ),
+                                const SizedBox(width: 6),
+                                IconButton(
+                                  padding: EdgeInsets.zero,
+                                  constraints: const BoxConstraints(),
+                                  icon: const Icon(
+                                    Icons.open_in_new,
+                                    size: 16,
+                                    color: Colors.white70,
+                                  ),
+                                  onPressed: () {
+                                    launchUrl(
+                                      Uri.parse(
+                                        'https://play.google.com/store/apps/details?id=com.syncfusion.flutter.examples&hl=en',
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
+                            )),
+                        Column(
+                          children: [
+                            ...widgetsPoints.map((point) => Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: Text(
+                                    textScaler: isSmall
+                                        ? TextScaler.linear(0.95)
+                                        : TextScaler.linear(1),
+                                    point,
+                                    softWrap: true,
+                                    style: GoogleFonts.openSans(
+                                      fontSize: isSmall ? 12 : 13,
                                       color: Colors.white,
                                     ),
                                   ),

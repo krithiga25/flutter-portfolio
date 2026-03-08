@@ -6,7 +6,8 @@ import 'package:portfolio_web/widgets/headerbutton.dart';
 
 const url =
     // "https://firebasestorage.googleapis.com/v0/b/portfoliokrithi.appspot.com/o/Resume%20India.pdf?alt=media&token=a83fa583-b779-4e11-bc96-bb95439bff9a";
-    "https://www.dropbox.com/scl/fi/a3utguvdzkdc40zyq72uh/Krithiga-Perumal-Resume_2025.pdf?rlkey=2nxyl388f02hba14zm0sj8tjt&st=0oeklqin&dl=0";
+    //"https://www.dropbox.com/scl/fi/a3utguvdzkdc40zyq72uh/Krithiga-Perumal-Resume_2025.pdf?rlkey=2nxyl388f02hba14zm0sj8tjt&st=0oeklqin&dl=0";
+    "https://www.dropbox.com/scl/fi/vr39rwo7bjpacn1ytrdf4/Krithiga_Perumal_Flutter-2026.pdf?rlkey=ddzm1j6y1qoykv5h4homh74pt&st=bly6w8zu&dl=0";
 List<Widget> navButtons(PageController controller) {
   return [
     TextButton(
@@ -50,7 +51,7 @@ List<Widget> navButtons(PageController controller) {
         "CONTACT",
         style: GoogleFonts.openSans(color: Colors.white, letterSpacing: 1.25),
       ),
-      onPressed: () => controller.animateToPage(4,
+      onPressed: () => controller.animateToPage(5,
           duration: const Duration(milliseconds: 1200),
           curve: Curves.easeInOutSine),
     ),
@@ -117,7 +118,7 @@ List<Widget> navButtons1(PageController controller) {
     ),
     SmallHeaderButton(
       text1: "CONTACT",
-      press1: () => controller.animateToPage(4,
+      press1: () => controller.animateToPage(5,
           duration: const Duration(milliseconds: 1200),
           curve: Curves.easeInOutSine),
     ),
