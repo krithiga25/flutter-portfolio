@@ -118,7 +118,7 @@ List<Widget> navButtons1(PageController controller) {
     ),
     SmallHeaderButton(
       text1: "CONTACT",
-      press1: () => controller.animateToPage(5,
+      press1: () => controller.animateToPage(6,
           duration: const Duration(milliseconds: 1200),
           curve: Curves.easeInOutSine),
     ),

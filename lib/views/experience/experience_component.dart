@@ -130,7 +130,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                     ),
                     Container(
                       width: 1,
-                      height: isSmall ? 500 : 460,
+                      height: isSmall ? 515 : 460,
                       color: Colors.white,
                     ),
                   ]),
@@ -170,7 +170,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                           ),
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                            padding:  EdgeInsets.only(bottom: isSmall ? 6 : 10 ),
                             child: Row(
                               children: [
                                 Text(
@@ -218,7 +218,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                           ],
                         ),
                         Padding(
-                            padding: const EdgeInsets.only(bottom: 10),
+                            padding:  EdgeInsets.only(bottom: isSmall ? 6 : 10),
                             child: Row(
                               children: [
                                 Text(
@@ -258,7 +258,7 @@ Widget experienceContent(BuildContext context, {PageController? controller}) {
                                     point,
                                     softWrap: true,
                                     style: GoogleFonts.openSans(
-                                      fontSize: isSmall ? 12 : 13,
+                                      fontSize: isSmall ? 13 : 13,
                                       color: Colors.white,
                                     ),
                                   ),
