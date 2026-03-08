@@ -181,8 +181,8 @@ Widget project1(BuildContext context) => Container(
               alignment: Alignment.bottomRight,
               child: TextButton(
                   onPressed: () {
-                    launch(
-                        'https://github.com/krithiga25/provider-ecommerce-app');
+                    launchUrl(Uri.parse(
+                        'https://github.com/krithiga25/provider-ecommerce-app'));
                   },
                   child: Container(
                     padding:
@@ -298,7 +298,8 @@ Widget project2(BuildContext context) => Container(
               alignment: Alignment.bottomRight,
               child: TextButton(
                   onPressed: () {
-                    launch('https://github.com/krithiga25/SplitEase');
+                    launchUrl(
+                        Uri.parse('https://github.com/krithiga25/SplitEase'));
                   },
                   child: Container(
                     padding:
@@ -414,8 +415,8 @@ Widget project3(BuildContext context) => Container(
               alignment: Alignment.bottomRight,
               child: TextButton(
                   onPressed: () {
-                    launch(
-                        'https://github.com/krithiga25/provider-ecommerce-app/RAG_pipeline');
+                    launchUrl(Uri.parse(
+                        'https://github.com/krithiga25/provider-ecommerce-app/RAG_pipeline'));
                   },
                   child: Container(
                     padding:
