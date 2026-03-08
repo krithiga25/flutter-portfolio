@@ -37,18 +37,18 @@ aboutHeading(BuildContext context) {
             indent: isSmall ? 80 : 400,
             endIndent: isSmall ? 80 : 400,
           ),
-          if (!isSmall)
-            Padding(
-              padding: EdgeInsets.only(top: 10, bottom: 10),
-              child: Center(
-                  child: Text(
-                'I’m a Software Development Engineer with one year of experience in crafting seamless digital experiences across mobile and web platforms. I have hands-on expertise in developing AI-driven features, optimizing performance, and contributing to open-source projects. Always eager to learn, grow, and collaborate on projects that make an impact.',
-                softWrap: true,
-                textAlign: TextAlign.center,
-                textScaler: TextScaler.linear(1),
-                style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
-              )),
-            ),
+          // if (!isSmall)
+          //   Padding(
+          //     padding: EdgeInsets.only(top: 10, bottom: 10),
+          //     child: Center(
+          //         child: Text(
+          //       'I’m a Software Development Engineer with one year of experience in crafting seamless digital experiences across mobile and web platforms. I have hands-on expertise in developing AI-driven features, optimizing performance, and contributing to open-source projects. Always eager to learn, grow, and collaborate on projects that make an impact.',
+          //       softWrap: true,
+          //       textAlign: TextAlign.center,
+          //       textScaler: TextScaler.linear(1),
+          //       style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
+          //     )),
+          //   ),
         ],
       ),
     ),
@@ -86,9 +86,10 @@ aboutContent(BuildContext context) {
           Padding(
             padding: EdgeInsets.only(top: 10),
             child: Text(
-              "I’m a Software Development Engineer with a knack for crafting seamless digital experiences across mobile and web platforms. With hands-on experience in developing AI-driven features, optimizing performance, and contributing to open-source projects, I thrive on solving complex challenges. I’m always eager to learn, grow, and collaborate on projects that make an impact.",
+              "I am a Software Engineer with 2 years of Flutter experience, with a focus on cross-platform plugin development and mobile apps. \nMade significant contributions to popular Flutter plugins on pub.dev, which has received 100k+ downloads. \nWorked on delivering features such as native platform bridges, performance-critical optimizations, and AI integrations.",
               softWrap: true,
               textScaler: TextScaler.linear(1),
+              textAlign: TextAlign.justify,
               style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
             ),
           ),
@@ -129,7 +130,7 @@ techContent(BuildContext context) {
             Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: Text(
-                '› C#   › Dart   › JavaScript   › Python   › Java',
+                '› Dart   › JavaScript › C#  › Python  › Java',
                 textScaler: TextScaler.linear(1),
                 style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),
@@ -137,7 +138,7 @@ techContent(BuildContext context) {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: Text(
-                'Web & App Development:',
+                'App Development & Database:',
                 textScaler: TextScaler.linear(1.25),
                 style: GoogleFonts.openSans(
                     color: Color.fromARGB(255, 148, 89, 250),
@@ -147,7 +148,7 @@ techContent(BuildContext context) {
             Padding(
               padding: EdgeInsets.only(bottom: 25),
               child: Text(
-                '› Node.js   › Express.js   › React   › MERN Stack   › HTML   › CSS   › Android SDK   › Flutter   › Provider (Flutter)\n› Firebase',
+                '› Node.js   › Express.js  › Android SDK   › Flutter   › Provider (Flutter)   › Firebase   › Riverpod (Flutter)   › MongoDB',
                 textScaler: TextScaler.linear(1),
                 style: GoogleFonts.openSans(color: Colors.white, height: 1.5),
               ),

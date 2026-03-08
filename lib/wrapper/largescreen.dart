@@ -21,6 +21,7 @@ class LargeScreen extends StatelessWidget {
       lAbout(context),
       lExperience(context),
       lStackproject(context),
+      lStackproject2(context),
       lContact(context),
     ];
 
